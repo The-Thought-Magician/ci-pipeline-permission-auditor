@@ -39,6 +39,7 @@ interface Overview {
   crown_jewels?: number
   crown_jewel_reachable?: number
   reachable_crown_jewels?: number
+  reachable_crown_jewel_count?: number
   control_coverage?: number
   coverage?: number
   secret_count?: number
@@ -210,7 +211,11 @@ export default function DashboardPage() {
   )
   const avgRisk = num(overview?.avg_risk_score, overview?.average_risk_score)
   const crownTotal = num(overview?.crown_jewel_count, overview?.crown_jewels)
-  const crownReachable = num(overview?.crown_jewel_reachable, overview?.reachable_crown_jewels)
+  const crownReachable = num(
+    overview?.reachable_crown_jewel_count,
+    overview?.crown_jewel_reachable,
+    overview?.reachable_crown_jewels,
+  )
   const coverage = num(overview?.control_coverage, overview?.coverage)
   const secretCount = num(overview?.secret_count, overview?.secrets)
   const providerCount = num(overview?.provider_count, overview?.providers)

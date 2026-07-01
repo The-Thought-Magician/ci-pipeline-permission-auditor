@@ -9,6 +9,8 @@ import {
   effective_permissions,
   evidence_packs,
   snapshots,
+  providers,
+  secrets,
 } from '../db/schema.js'
 import { eq, and, desc } from 'drizzle-orm'
 
@@ -29,6 +31,8 @@ router.get('/overview', async (c) => {
     blastRows,
     effectiveRows,
     evidenceRows,
+    providerRows,
+    secretRows,
   ] = await Promise.all([
     db.select().from(pipelines).where(eq(pipelines.workspace_id, workspaceId)),
     db.select().from(pipeline_identities).where(eq(pipeline_identities.workspace_id, workspaceId)),
@@ -37,6 +41,8 @@ router.get('/overview', async (c) => {
     db.select().from(blast_radius).where(eq(blast_radius.workspace_id, workspaceId)),
     db.select().from(effective_permissions).where(eq(effective_permissions.workspace_id, workspaceId)),
     db.select().from(evidence_packs).where(eq(evidence_packs.workspace_id, workspaceId)),
+    db.select().from(providers).where(eq(providers.workspace_id, workspaceId)),
+    db.select().from(secrets).where(eq(secrets.workspace_id, workspaceId)),
   ])
 
   // Finding mix by severity (only open/acknowledged count toward posture).
@@ -79,7 +85,9 @@ router.get('/overview', async (c) => {
   return c.json({
     workspace_id: workspaceId,
     pipeline_count: pipelineRows.length,
+    provider_count: providerRows.length,
     identity_count: identityRows.length,
+    secret_count: secretRows.length,
     long_lived_identity_count: identityRows.filter((i) => i.is_long_lived).length,
     finding_count: findingRows.length,
     open_finding_count: openFindings,
