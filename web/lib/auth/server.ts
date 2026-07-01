@@ -1,5 +1,5 @@
-// Offline stub — auth handled by local cookie routes; nothing cloud here.
-export const auth = {
-  getSession: async () => null,
-  api: { getSession: async () => null },
-}
+import { createNeonAuth } from '@neondatabase/auth/next/server'
+export const auth = createNeonAuth({
+  baseUrl: process.env.NEON_AUTH_BASE_URL!,
+  cookies: { secret: process.env.NEON_AUTH_COOKIE_SECRET! },
+})
