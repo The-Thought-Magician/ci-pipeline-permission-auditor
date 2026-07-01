@@ -11,7 +11,9 @@ function withTimeout<T>(promise: Promise<T> | undefined | null, ms: number): Pro
 }
 
 async function proxy(req: NextRequest, { params }: { params: Promise<{ path: string[] }> }) {
-  const session = await withTimeout((auth as any).api?.getSession({ headers: req.headers }), 5000)
+  const session =
+    (await withTimeout((auth as any).api?.getSession({ headers: req.headers }), 5000)) ??
+    (await withTimeout(auth.getSession(), 5000))
   const userId = (session as any)?.user?.id ?? (session as any)?.data?.user?.id
   if (!userId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   const { path } = await params
