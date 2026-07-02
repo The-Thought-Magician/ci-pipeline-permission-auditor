@@ -269,8 +269,8 @@ export default function SecretsPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Secrets in CI</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Secrets in CI</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Track every secret referenced by your pipelines, surface plaintext and fork-PR exposure, and drive
             rotation hygiene.
           </p>
@@ -280,7 +280,7 @@ export default function SecretsPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -338,12 +338,12 @@ export default function SecretsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search by name or store..."
-                  className="min-w-[200px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
+                  className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
                 />
                 <select
                   value={riskFilter}
                   onChange={(e) => setRiskFilter(e.target.value as RiskFilter)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All risk</option>
                   <option value="plaintext">Plaintext</option>
@@ -355,7 +355,7 @@ export default function SecretsPage() {
                 <select
                   value={storeFilter}
                   onChange={(e) => setStoreFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All stores</option>
                   {stores.map((s) => (
@@ -367,15 +367,15 @@ export default function SecretsPage() {
               </div>
 
               {selected.size > 0 && (
-                <div className="flex items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900/80 px-4 py-2 text-sm">
-                  <span className="text-zinc-400">{selected.size} selected</span>
+                <div className="flex items-center gap-3 rounded-lg border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm">
+                  <span className="text-slate-400">{selected.size} selected</span>
                   <Button size="sm" variant="secondary" onClick={bulkRotate} disabled={busy}>
                     Rotate selected
                   </Button>
                   <Button size="sm" variant="danger" onClick={bulkDelete} disabled={busy}>
                     Delete selected
                   </Button>
-                  <button className="ml-auto text-zinc-500 hover:text-zinc-300" onClick={() => setSelected(new Set())}>
+                  <button className="ml-auto text-slate-500 hover:text-slate-300" onClick={() => setSelected(new Set())}>
                     Clear
                   </button>
                 </div>
@@ -441,14 +441,14 @@ export default function SecretsPage() {
                           </TD>
                           <TD>
                             <button
-                              className="font-medium text-zinc-100 hover:text-red-400"
+                              className="font-medium text-slate-100 hover:text-red-400"
                               onClick={() => openDetail(s.id)}
                             >
                               {s.name}
                             </button>
                           </TD>
                           <TD>
-                            <span className="text-zinc-400">{s.store || '—'}</span>
+                            <span className="text-slate-400">{s.store || '—'}</span>
                           </TD>
                           <TD>
                             <div className="flex flex-wrap gap-1">
@@ -463,7 +463,7 @@ export default function SecretsPage() {
                           </TD>
                           <TD>
                             <div className="flex items-center gap-2">
-                              <span className={stale ? 'text-amber-400' : 'text-zinc-400'}>
+                              <span className={stale ? 'text-amber-400' : 'text-slate-400'}>
                                 {age == null ? 'never' : `${age}d ago`}
                               </span>
                               {stale && <Badge tone="warning">stale</Badge>}
@@ -520,8 +520,8 @@ export default function SecretsPage() {
         ) : detail ? (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <div className="text-lg font-semibold text-zinc-100">{detail.name}</div>
-              <span className="text-sm text-zinc-500">{detail.store || 'unknown store'}</span>
+              <div className="text-lg font-semibold text-slate-100">{detail.name}</div>
+              <span className="text-sm text-slate-500">{detail.store || 'unknown store'}</span>
             </div>
             <div className="flex flex-wrap gap-2">
               <Badge tone={detail.is_masked ? 'success' : 'high'}>
@@ -535,20 +535,20 @@ export default function SecretsPage() {
             </div>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <div className="text-xs uppercase text-zinc-500">Last rotated</div>
-                <div className="text-zinc-200">
+                <div className="text-xs uppercase text-slate-500">Last rotated</div>
+                <div className="text-slate-200">
                   {detail.last_rotated_at ? new Date(detail.last_rotated_at).toLocaleString() : 'never'}
                 </div>
               </div>
               <div>
-                <div className="text-xs uppercase text-zinc-500">Rotation age</div>
-                <div className="text-zinc-200">
+                <div className="text-xs uppercase text-slate-500">Rotation age</div>
+                <div className="text-slate-200">
                   {rotationAge(detail) == null ? '—' : `${rotationAge(detail)} days`}
                 </div>
               </div>
             </div>
             <div>
-              <div className="mb-2 text-xs uppercase text-zinc-500">
+              <div className="mb-2 text-xs uppercase text-slate-500">
                 Referenced by ({detail.references?.length ?? 0} pipeline{(detail.references?.length ?? 0) === 1 ? '' : 's'})
               </div>
               {detail.references && detail.references.length > 0 ? (
@@ -556,18 +556,18 @@ export default function SecretsPage() {
                   {detail.references.map((r) => (
                     <div
                       key={r.id}
-                      className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 text-sm"
+                      className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2 text-sm"
                     >
-                      <span className="font-mono text-xs text-zinc-300">{r.pipeline_id}</span>
+                      <span className="font-mono text-xs text-slate-300">{r.pipeline_id}</span>
                       <div className="flex items-center gap-2">
-                        {r.usage_context && <span className="text-zinc-500">{r.usage_context}</span>}
+                        {r.usage_context && <span className="text-slate-500">{r.usage_context}</span>}
                         {r.is_logged && <Badge tone="critical">logged</Badge>}
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-zinc-500">No pipeline references recorded.</p>
+                <p className="text-sm text-slate-500">No pipeline references recorded.</p>
               )}
             </div>
             <div className="flex justify-end gap-2 pt-2">
@@ -657,20 +657,20 @@ function SecretForm({
       <div className="space-y-4">
         {err && <div className="rounded-lg border border-red-800 bg-red-950/50 px-3 py-2 text-sm text-red-300">{err}</div>}
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Name</label>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="AWS_DEPLOY_KEY"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Store</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Store</label>
           <select
             value={store ?? ''}
             onChange={(e) => setStore(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             {STORES.map((s) => (
               <option key={s} value={s}>
@@ -706,7 +706,7 @@ function Toggle({
       className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
         checked && danger
           ? 'border-red-800 bg-red-950/40 text-red-300'
-          : 'border-zinc-700 bg-zinc-900 text-zinc-300'
+          : 'border-slate-700 bg-slate-900 text-slate-300'
       }`}
     >
       <input type="checkbox" checked={checked} onChange={(e) => onChange(e.target.checked)} />

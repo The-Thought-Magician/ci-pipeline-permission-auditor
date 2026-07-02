@@ -140,8 +140,8 @@ export default function ActivityPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Activity Log</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Activity Log</h1>
+          <p className="mt-1 text-sm text-slate-500">
             An immutable, append-only record of every change in this workspace. Filter by actor,
             entity, or free text.
           </p>
@@ -169,12 +169,12 @@ export default function ActivityPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search action, entity, metadata..."
-              className="min-w-[14rem] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:border-red-500 focus:outline-none"
+              className="min-w-[14rem] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:border-red-500 focus:outline-none"
             />
             <select
               value={actorFilter}
               onChange={(e) => setActorFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-500 focus:outline-none"
             >
               <option value="">All actors</option>
               {actors.map((a) => (
@@ -186,7 +186,7 @@ export default function ActivityPage() {
             <select
               value={entityFilter}
               onChange={(e) => setEntityFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-500 focus:outline-none"
             >
               <option value="">All entities</option>
               {entityTypes.map((t) => (
@@ -241,17 +241,17 @@ export default function ActivityPage() {
                   const open = expanded === e.id
                   return (
                     <TR key={e.id} className="align-top">
-                      <TD className="whitespace-nowrap text-xs text-zinc-500">
+                      <TD className="whitespace-nowrap text-xs text-slate-500">
                         {fmtDate(e.created_at)}
                       </TD>
-                      <TD className="font-mono text-xs text-zinc-400">{e.actor_id ?? 'system'}</TD>
+                      <TD className="font-mono text-xs text-slate-400">{e.actor_id ?? 'system'}</TD>
                       <TD>
                         <Badge tone={actionTone(e.action)}>{e.action ?? 'unknown'}</Badge>
                       </TD>
                       <TD>
-                        <div className="text-zinc-300">{e.entity_type ?? '-'}</div>
+                        <div className="text-slate-300">{e.entity_type ?? '-'}</div>
                         {e.entity_id && (
-                          <div className="font-mono text-xs text-zinc-600">{e.entity_id}</div>
+                          <div className="font-mono text-xs text-slate-600">{e.entity_id}</div>
                         )}
                       </TD>
                       <TD>
@@ -264,7 +264,7 @@ export default function ActivityPage() {
                               {open ? 'Hide' : 'Show'} metadata
                             </button>
                             {open && (
-                              <pre className="mt-2 overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-400">
+                              <pre className="mt-2 overflow-x-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
                                 {(() => {
                                   try {
                                     return JSON.stringify(
@@ -282,7 +282,7 @@ export default function ActivityPage() {
                             )}
                           </div>
                         ) : (
-                          <span className="text-xs text-zinc-600">-</span>
+                          <span className="text-xs text-slate-600">-</span>
                         )}
                       </TD>
                     </TR>

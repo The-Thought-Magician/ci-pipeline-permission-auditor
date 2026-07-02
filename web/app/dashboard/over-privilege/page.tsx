@@ -191,8 +191,8 @@ export default function OverPrivilegePage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Over-Privilege</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Over-Privilege</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Pipelines whose effective privilege exceeds declared need, with least-privilege remediation.
           </p>
         </div>
@@ -240,12 +240,12 @@ export default function OverPrivilegePage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search title or description..."
-                  className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                  className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
                 />
                 <select
                   value={severityFilter}
                   onChange={(e) => setSeverityFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All severities</option>
                   {SEVERITY_ORDER.map((s) => (
@@ -257,7 +257,7 @@ export default function OverPrivilegePage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All statuses</option>
                   {STATUS_OPTIONS.map((s) => (
@@ -302,12 +302,12 @@ export default function OverPrivilegePage() {
                         <TD>
                           <button
                             onClick={() => setDetail(f)}
-                            className="text-left font-medium text-zinc-100 hover:text-red-300"
+                            className="text-left font-medium text-slate-100 hover:text-red-300"
                           >
                             {f.title}
                           </button>
                           {f.description && (
-                            <div className="mt-0.5 line-clamp-1 max-w-md text-xs text-zinc-500">
+                            <div className="mt-0.5 line-clamp-1 max-w-md text-xs text-slate-500">
                               {f.description}
                             </div>
                           )}
@@ -315,8 +315,8 @@ export default function OverPrivilegePage() {
                         <TD>
                           <Badge tone={statusTone(f.status)}>{f.status.replace('_', ' ')}</Badge>
                         </TD>
-                        <TD className="text-zinc-400">{f.assignee || '—'}</TD>
-                        <TD className="text-zinc-400">{fmtDate(f.due_date)}</TD>
+                        <TD className="text-slate-400">{f.assignee || '—'}</TD>
+                        <TD className="text-slate-400">{fmtDate(f.due_date)}</TD>
                         <TD>
                           <div className="flex justify-end gap-1.5">
                             {f.status !== 'acknowledged' && f.status !== 'resolved' && (
@@ -387,15 +387,15 @@ export default function OverPrivilegePage() {
               <Badge tone={statusTone(detail.status)}>{detail.status.replace('_', ' ')}</Badge>
               <Badge tone="neutral">{detail.detector}</Badge>
             </div>
-            {detail.description && <p className="text-zinc-300">{detail.description}</p>}
+            {detail.description && <p className="text-slate-300">{detail.description}</p>}
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Status</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Status</div>
                 <select
                   value={detail.status}
                   onChange={(e) => patchFinding(detail.id, { status: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   {STATUS_OPTIONS.map((s) => (
                     <option key={s} value={s}>
@@ -405,11 +405,11 @@ export default function OverPrivilegePage() {
                 </select>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Severity</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Severity</div>
                 <select
                   value={detail.severity}
                   onChange={(e) => patchFinding(detail.id, { severity: e.target.value })}
-                  className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   {SEVERITY_ORDER.map((s) => (
                     <option key={s} value={s}>
@@ -419,7 +419,7 @@ export default function OverPrivilegePage() {
                 </select>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Assignee</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Assignee</div>
                 <input
                   defaultValue={detail.assignee || ''}
                   onBlur={(e) => {
@@ -427,19 +427,19 @@ export default function OverPrivilegePage() {
                     if (v !== (detail.assignee || '')) patchFinding(detail.id, { assignee: v })
                   }}
                   placeholder="unassigned"
-                  className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
                 />
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Created</div>
-                <div className="mt-1 py-1.5 text-zinc-400">{fmtDate(detail.created_at)}</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Created</div>
+                <div className="mt-1 py-1.5 text-slate-400">{fmtDate(detail.created_at)}</div>
               </div>
             </div>
 
             {detail.evidence != null && (
               <div>
-                <div className="mb-1 text-xs uppercase tracking-wide text-zinc-500">Evidence</div>
-                <pre className="max-h-64 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-400">
+                <div className="mb-1 text-xs uppercase tracking-wide text-slate-500">Evidence</div>
+                <pre className="max-h-64 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-400">
                   {JSON.stringify(detail.evidence, null, 2)}
                 </pre>
               </div>

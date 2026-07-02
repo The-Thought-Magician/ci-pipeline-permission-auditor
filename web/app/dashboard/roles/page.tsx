@@ -233,8 +233,8 @@ export default function RolesPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Roles &amp; Permissions</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Roles &amp; Permissions</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Inventory the cloud roles your pipelines assume, the permissions attached to them, and which roles carry
             privileged or wildcard access.
           </p>
@@ -244,7 +244,7 @@ export default function RolesPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -309,12 +309,12 @@ export default function RolesPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search by name or ARN..."
-                  className="min-w-[200px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
+                  className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
                 />
                 <select
                   value={privFilter}
                   onChange={(e) => setPrivFilter(e.target.value as PrivFilter)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All roles</option>
                   <option value="privileged">Privileged</option>
@@ -323,7 +323,7 @@ export default function RolesPage() {
                 <select
                   value={cloudFilter}
                   onChange={(e) => setCloudFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All clouds</option>
                   {clouds.map((c) => (
@@ -378,16 +378,16 @@ export default function RolesPage() {
                         <TR key={r.id}>
                           <TD>
                             <button
-                              className="font-medium text-zinc-100 hover:text-red-400"
+                              className="font-medium text-slate-100 hover:text-red-400"
                               onClick={() => openDetail(r.id)}
                             >
                               {r.name}
                             </button>
-                            {r.arn && <div className="font-mono text-xs text-zinc-500">{r.arn}</div>}
+                            {r.arn && <div className="font-mono text-xs text-slate-500">{r.arn}</div>}
                           </TD>
-                          <TD>{r.cloud ? <Badge tone="info">{r.cloud}</Badge> : <span className="text-zinc-600">—</span>}</TD>
+                          <TD>{r.cloud ? <Badge tone="info">{r.cloud}</Badge> : <span className="text-slate-600">—</span>}</TD>
                           <TD>
-                            <span className="text-zinc-300">{perms.length}</span>
+                            <span className="text-slate-300">{perms.length}</span>
                           </TD>
                           <TD>
                             <div className="flex flex-wrap gap-1">
@@ -474,8 +474,8 @@ export default function RolesPage() {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-lg font-semibold text-zinc-100">{detail.name}</div>
-                {detail.arn && <div className="font-mono text-xs text-zinc-500">{detail.arn}</div>}
+                <div className="text-lg font-semibold text-slate-100">{detail.name}</div>
+                {detail.arn && <div className="font-mono text-xs text-slate-500">{detail.arn}</div>}
               </div>
               <div className="flex flex-wrap gap-2">
                 {detail.cloud && <Badge tone="info">{detail.cloud}</Badge>}
@@ -485,8 +485,8 @@ export default function RolesPage() {
 
             {detail.policy_summary != null && (
               <div>
-                <div className="mb-1 text-xs uppercase text-zinc-500">Policy summary</div>
-                <pre className="max-h-48 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-300">
+                <div className="mb-1 text-xs uppercase text-slate-500">Policy summary</div>
+                <pre className="max-h-48 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300">
                   {typeof detail.policy_summary === 'string'
                     ? detail.policy_summary
                     : JSON.stringify(detail.policy_summary, null, 2)}
@@ -496,7 +496,7 @@ export default function RolesPage() {
 
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <div className="text-xs uppercase text-zinc-500">
+                <div className="text-xs uppercase text-slate-500">
                   Attached permissions ({detail.permissions?.length ?? 0})
                 </div>
                 <Button
@@ -516,19 +516,19 @@ export default function RolesPage() {
                   {detail.permissions.map((p) => (
                     <div
                       key={p.id}
-                      className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 text-sm"
+                      className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2 text-sm"
                     >
                       <div className="flex items-center gap-2">
                         <Badge tone={p.effect === 'deny' ? 'success' : p.is_wildcard ? 'critical' : 'neutral'}>
                           {p.effect}
                         </Badge>
-                        <span className="font-mono text-xs text-zinc-200">{p.action}</span>
+                        <span className="font-mono text-xs text-slate-200">{p.action}</span>
                         {p.is_wildcard && <Badge tone="high">wildcard</Badge>}
-                        {p.category && <span className="text-xs text-zinc-500">{p.category}</span>}
+                        {p.category && <span className="text-xs text-slate-500">{p.category}</span>}
                       </div>
                       <div className="flex items-center gap-2">
                         <button
-                          className="text-xs text-zinc-400 hover:text-zinc-100"
+                          className="text-xs text-slate-400 hover:text-slate-100"
                           onClick={() => {
                             setEditingPerm(p)
                             setPermRoleId(p.role_id ?? detail.id)
@@ -549,7 +549,7 @@ export default function RolesPage() {
                   ))}
                 </div>
               ) : (
-                <p className="text-sm text-zinc-500">No permissions attached to this role yet.</p>
+                <p className="text-sm text-slate-500">No permissions attached to this role yet.</p>
               )}
             </div>
           </div>
@@ -638,20 +638,20 @@ function RoleForm({
           <div className="rounded-lg border border-red-800 bg-red-950/50 px-3 py-2 text-sm text-red-300">{err}</div>
         )}
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Name</label>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="gha-deploy-prod"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Cloud</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Cloud</label>
           <select
             value={cloud ?? ''}
             onChange={(e) => setCloud(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             {CLOUDS.map((c) => (
               <option key={c} value={c}>
@@ -661,27 +661,27 @@ function RoleForm({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">ARN / resource id</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">ARN / resource id</label>
           <input
             value={arn}
             onChange={(e) => setArn(e.target.value)}
             placeholder="arn:aws:iam::123456789012:role/gha-deploy-prod"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm font-mono text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm font-mono text-slate-200"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Policy summary (JSON or text)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Policy summary (JSON or text)</label>
           <textarea
             value={policyText}
             onChange={(e) => setPolicyText(e.target.value)}
             rows={4}
             placeholder='{"statements": 3, "services": ["s3", "ecr"]}'
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm font-mono text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm font-mono text-slate-200"
           />
         </div>
         <label
           className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
-            isPrivileged ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-zinc-700 bg-zinc-900 text-zinc-300'
+            isPrivileged ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-slate-700 bg-slate-900 text-slate-300'
           }`}
         >
           <input type="checkbox" checked={isPrivileged} onChange={(e) => setIsPrivileged(e.target.checked)} />
@@ -768,11 +768,11 @@ function PermissionForm({
           <div className="rounded-lg border border-red-800 bg-red-950/50 px-3 py-2 text-sm text-red-300">{err}</div>
         )}
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Role</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Role</label>
           <select
             value={roleId}
             onChange={(e) => setRoleId(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             <option value="">Select a role...</option>
             {roles.map((r) => (
@@ -783,21 +783,21 @@ function PermissionForm({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Action</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Action</label>
           <input
             value={action}
             onChange={(e) => setAction(e.target.value)}
             placeholder="s3:PutObject"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm font-mono text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm font-mono text-slate-200"
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Effect</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Effect</label>
             <select
               value={effect}
               onChange={(e) => setEffect(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {EFFECTS.map((e) => (
                 <option key={e} value={e}>
@@ -807,11 +807,11 @@ function PermissionForm({
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Category</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Category</label>
             <select
               value={category ?? ''}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c}>
@@ -824,13 +824,13 @@ function PermissionForm({
         <div className="grid grid-cols-2 gap-3">
           <label
             className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
-              isWildcard ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-zinc-700 bg-zinc-900 text-zinc-300'
+              isWildcard ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-slate-700 bg-slate-900 text-slate-300'
             }`}
           >
             <input type="checkbox" checked={isWildcard} onChange={(e) => setIsWildcard(e.target.checked)} />
             Wildcard action
           </label>
-          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-300">
+          <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-300">
             <input type="checkbox" checked={isDeclared} onChange={(e) => setIsDeclared(e.target.checked)} />
             Declared in policy
           </label>

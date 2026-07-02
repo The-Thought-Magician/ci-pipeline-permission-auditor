@@ -306,15 +306,15 @@ export default function PipelinesPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Pipeline Inventory</h1>
-          <p className="mt-1 text-sm text-zinc-500">Every CI/CD pipeline, ranked by computed permission risk.</p>
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Pipeline Inventory</h1>
+          <p className="mt-1 text-sm text-slate-500">Every CI/CD pipeline, ranked by computed permission risk.</p>
         </div>
         <div className="flex items-center gap-2">
           {workspaces.length > 1 && (
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -358,12 +358,12 @@ export default function PipelinesPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search repo, branch, file..."
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 />
                 <select
                   value={band}
                   onChange={(e) => setBand(e.target.value as RiskBand)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 >
                   <option value="all">All risk</option>
                   <option value="critical">Critical (≥70)</option>
@@ -378,8 +378,8 @@ export default function PipelinesPage() {
             </CardHeader>
 
             {selected.size > 0 && (
-              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 bg-zinc-900/60 px-5 py-3">
-                <span className="text-sm text-zinc-300">{selected.size} selected</span>
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 bg-slate-900/60 px-5 py-3">
+                <span className="text-sm text-slate-300">{selected.size} selected</span>
                 <div className="flex gap-2">
                   <Button size="sm" variant="secondary" onClick={bulkAnalyze} disabled={busy === 'bulk-analyze'}>
                     {busy === 'bulk-analyze' ? 'Analyzing...' : 'Re-analyze selected'}
@@ -440,19 +440,19 @@ export default function PipelinesPage() {
                               aria-label={`Select ${p.name}`}
                             />
                           </TD>
-                          <TD className="font-medium text-zinc-100">
+                          <TD className="font-medium text-slate-100">
                             <Link href={`/dashboard/pipelines/${p.id}`} className="hover:text-red-300">
                               {p.name}
                             </Link>
-                            {p.file_path && <div className="text-xs text-zinc-600">{p.file_path}</div>}
+                            {p.file_path && <div className="text-xs text-slate-600">{p.file_path}</div>}
                           </TD>
-                          <TD className="text-zinc-400">{p.repo || '—'}</TD>
-                          <TD className="text-zinc-400">{p.branch || '—'}</TD>
-                          <TD className="text-zinc-400">{providerName(p.provider_id)}</TD>
+                          <TD className="text-slate-400">{p.repo || '—'}</TD>
+                          <TD className="text-slate-400">{p.branch || '—'}</TD>
+                          <TD className="text-slate-400">{providerName(p.provider_id)}</TD>
                           <TD>
                             <div className="flex items-center gap-2">
                               <Badge tone={riskTone(score)}>{fmtScore(score)}</Badge>
-                              <div className="h-1.5 w-16 overflow-hidden rounded-full bg-zinc-800">
+                              <div className="h-1.5 w-16 overflow-hidden rounded-full bg-slate-800">
                                 <div
                                   className={
                                     score >= 70
@@ -468,7 +468,7 @@ export default function PipelinesPage() {
                               </div>
                             </div>
                           </TD>
-                          <TD className="text-zinc-500">{fmtDate(p.last_seen_at)}</TD>
+                          <TD className="text-slate-500">{fmtDate(p.last_seen_at)}</TD>
                           <TD className="text-right">
                             <div className="flex justify-end gap-2">
                               <Button
@@ -544,7 +544,7 @@ export default function PipelinesPage() {
             <select
               value={form.provider_id}
               onChange={(e) => setForm({ ...form, provider_id: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               <option value="">No provider</option>
               {providers.map((p) => (
@@ -560,7 +560,7 @@ export default function PipelinesPage() {
               onChange={(e) => setForm({ ...form, raw_source: e.target.value })}
               rows={6}
               placeholder={'name: CI\non: [push]\npermissions:\n  contents: read\njobs:\n  build:\n    runs-on: ubuntu-latest'}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 font-mono text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 font-mono text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             />
           </Field>
         </div>
@@ -572,7 +572,7 @@ export default function PipelinesPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
       {children}
     </label>
   )
@@ -592,7 +592,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
     />
   )
 }

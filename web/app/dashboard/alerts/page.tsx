@@ -47,7 +47,7 @@ const blankAlert = {
 }
 
 function fieldClass() {
-  return 'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-red-500 focus:outline-none'
+  return 'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-red-500 focus:outline-none'
 }
 
 function fmtDate(s?: string) {
@@ -246,8 +246,8 @@ export default function AlertsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Alerts &amp; Notifications</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Alerts &amp; Notifications</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Define alert rules on your CI/CD security posture and review the notifications they raise.
           </p>
         </div>
@@ -278,11 +278,11 @@ export default function AlertsPage() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <div className="inline-flex rounded-lg border border-zinc-800 bg-zinc-900/60 p-1">
+        <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900/60 p-1">
           <button
             onClick={() => setTab('rules')}
             className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-              tab === 'rules' ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'rules' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             Alert Rules ({alerts.length})
@@ -290,7 +290,7 @@ export default function AlertsPage() {
           <button
             onClick={() => setTab('feed')}
             className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-              tab === 'feed' ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'feed' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             Feed ({notifications.length}
@@ -298,11 +298,11 @@ export default function AlertsPage() {
           </button>
         </div>
         {tab === 'feed' && (
-          <div className="ml-auto inline-flex rounded-lg border border-zinc-800 bg-zinc-900/60 p-1">
+          <div className="ml-auto inline-flex rounded-lg border border-slate-800 bg-slate-900/60 p-1">
             <button
               onClick={() => setFeedFilter('all')}
               className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-                feedFilter === 'all' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-400 hover:text-zinc-100'
+                feedFilter === 'all' ? 'bg-slate-700 text-slate-100' : 'text-slate-400 hover:text-slate-100'
               }`}
             >
               All
@@ -310,7 +310,7 @@ export default function AlertsPage() {
             <button
               onClick={() => setFeedFilter('unread')}
               className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-                feedFilter === 'unread' ? 'bg-zinc-700 text-zinc-100' : 'text-zinc-400 hover:text-zinc-100'
+                feedFilter === 'unread' ? 'bg-slate-700 text-slate-100' : 'text-slate-400 hover:text-slate-100'
               }`}
             >
               Unread
@@ -345,11 +345,11 @@ export default function AlertsPage() {
                 <TBody>
                   {alerts.map((a) => (
                     <TR key={a.id}>
-                      <TD className="font-medium text-zinc-200">{a.name}</TD>
+                      <TD className="font-medium text-slate-200">{a.name}</TD>
                       <TD>
                         <Badge tone="info">{triggerLabel(a.trigger_type)}</Badge>
                       </TD>
-                      <TD className="font-mono text-xs text-zinc-400">
+                      <TD className="font-mono text-xs text-slate-400">
                         {thresholdText(a.threshold) || '-'}
                       </TD>
                       <TD>
@@ -359,7 +359,7 @@ export default function AlertsPage() {
                           <Badge tone="neutral">disabled</Badge>
                         )}
                       </TD>
-                      <TD className="text-xs text-zinc-500">{fmtDate(a.created_at)}</TD>
+                      <TD className="text-xs text-slate-500">{fmtDate(a.created_at)}</TD>
                       <TD className="text-right">
                         <div className="inline-flex gap-2">
                           <Button size="sm" variant="ghost" onClick={() => toggleAlert(a)}>
@@ -395,27 +395,27 @@ export default function AlertsPage() {
                 />
               </div>
             ) : (
-              <ul className="divide-y divide-zinc-800">
+              <ul className="divide-y divide-slate-800">
                 {visibleNotifications.map((n) => (
                   <li
                     key={n.id}
-                    className={`flex items-start gap-4 px-5 py-4 ${n.is_read ? '' : 'bg-zinc-900/40'}`}
+                    className={`flex items-start gap-4 px-5 py-4 ${n.is_read ? '' : 'bg-slate-900/40'}`}
                   >
                     <span
                       className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${
-                        n.is_read ? 'bg-zinc-700' : 'bg-red-500'
+                        n.is_read ? 'bg-slate-700' : 'bg-red-500'
                       }`}
                     />
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-sm font-medium text-zinc-200">{n.title}</span>
+                        <span className="text-sm font-medium text-slate-200">{n.title}</span>
                         {n.severity && (
                           <Badge tone={severityTone(n.severity)}>{n.severity}</Badge>
                         )}
                         {!n.is_read && <Badge tone="critical">new</Badge>}
                       </div>
-                      {n.body && <p className="mt-1 text-sm text-zinc-400">{n.body}</p>}
-                      <div className="mt-1 flex items-center gap-3 text-xs text-zinc-600">
+                      {n.body && <p className="mt-1 text-sm text-slate-400">{n.body}</p>}
+                      <div className="mt-1 flex items-center gap-3 text-xs text-slate-600">
                         <span>{fmtDate(n.created_at)}</span>
                         {n.link && (
                           <a href={n.link} className="text-red-400 hover:text-red-300">
@@ -454,7 +454,7 @@ export default function AlertsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Name</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -463,7 +463,7 @@ export default function AlertsPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Trigger type</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Trigger type</label>
             <select
               value={form.trigger_type}
               onChange={(e) => setForm({ ...form, trigger_type: e.target.value })}
@@ -477,7 +477,7 @@ export default function AlertsPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">
+            <label className="mb-1 block text-xs font-medium text-slate-400">
               Threshold (optional)
             </label>
             <input
@@ -486,11 +486,11 @@ export default function AlertsPage() {
               placeholder="e.g. 70 for risk score, or a severity"
               className={fieldClass()}
             />
-            <p className="mt-1 text-xs text-zinc-600">
+            <p className="mt-1 text-xs text-slate-600">
               For numeric triggers (risk score) enter a number; leave blank for event triggers.
             </p>
           </div>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-slate-300">
             <input
               type="checkbox"
               checked={form.is_enabled}

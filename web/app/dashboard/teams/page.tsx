@@ -91,7 +91,7 @@ function riskColor(score: number): string {
   if (score >= 70) return 'text-red-400'
   if (score >= 40) return 'text-amber-400'
   if (score > 0) return 'text-emerald-400'
-  return 'text-zinc-300'
+  return 'text-slate-300'
 }
 
 export default function TeamsPage() {
@@ -282,8 +282,8 @@ export default function TeamsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Teams & Ownership</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Teams & Ownership</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Per-team posture, finding rollups, and member management across owned pipelines.
           </p>
         </div>
@@ -292,7 +292,7 @@ export default function TeamsPage() {
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -330,7 +330,7 @@ export default function TeamsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search teams..."
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 />
                 <Button size="sm" variant="secondary" onClick={refresh} disabled={loading}>
                   Refresh
@@ -374,14 +374,14 @@ export default function TeamsPage() {
                       const high = num(r.high)
                       return (
                         <TR key={t.id} className="cursor-pointer" onClick={() => openDetail(t)}>
-                          <TD className="font-medium text-zinc-100">
+                          <TD className="font-medium text-slate-100">
                             {t.name}
-                            {t.slug && <span className="ml-2 text-xs text-zinc-600">{t.slug}</span>}
+                            {t.slug && <span className="ml-2 text-xs text-slate-600">{t.slug}</span>}
                           </TD>
-                          <TD className="text-zinc-400">{t.owner_email || '—'}</TD>
-                          <TD className="text-zinc-500">{(t.member_ids ?? []).length}</TD>
+                          <TD className="text-slate-400">{t.owner_email || '—'}</TD>
+                          <TD className="text-slate-500">{(t.member_ids ?? []).length}</TD>
                           <TD>{num(t.pipeline_count)}</TD>
-                          <TD className={findings > 0 ? 'text-amber-400' : 'text-zinc-500'}>{findings}</TD>
+                          <TD className={findings > 0 ? 'text-amber-400' : 'text-slate-500'}>{findings}</TD>
                           <TD>
                             <div className="flex flex-wrap gap-1">
                               {crit > 0 && <Badge tone="critical">{crit} crit</Badge>}
@@ -454,7 +454,7 @@ export default function TeamsPage() {
               onChange={(e) => setForm({ ...form, members: e.target.value })}
               rows={4}
               placeholder={'alice@acme-corp.com\nbob@acme-corp.com'}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             />
           </Field>
         </div>
@@ -482,7 +482,7 @@ export default function TeamsPage() {
             <div className="flex flex-wrap items-center gap-2">
               {detail.slug && <Badge tone="neutral">{detail.slug}</Badge>}
               {detail.owner_email && <Badge tone="info">owner: {detail.owner_email}</Badge>}
-              <span className="text-xs text-zinc-500">Created {fmtDate(detail.created_at)}</span>
+              <span className="text-xs text-slate-500">Created {fmtDate(detail.created_at)}</span>
               {detailLoading && <Spinner label="Loading..." />}
             </div>
 
@@ -504,7 +504,7 @@ export default function TeamsPage() {
             {/* Finding rollup */}
             {(['critical', 'high', 'medium', 'low'] as const).some((k) => num(detailRollup[k]) > 0) && (
               <div>
-                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">Finding rollup</div>
+                <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Finding rollup</div>
                 <div className="flex flex-wrap gap-2">
                   {(['critical', 'high', 'medium', 'low'] as const).map((k) =>
                     num(detailRollup[k]) > 0 ? (
@@ -519,9 +519,9 @@ export default function TeamsPage() {
 
             {/* Owned pipelines */}
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">Owned pipelines</div>
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Owned pipelines</div>
               {detailPipelines.length === 0 ? (
-                <div className="rounded-lg border border-dashed border-zinc-800 bg-zinc-900/30 px-4 py-6 text-center text-sm text-zinc-500">
+                <div className="rounded-lg border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-center text-sm text-slate-500">
                   No pipelines are assigned to this team.
                 </div>
               ) : (
@@ -537,9 +537,9 @@ export default function TeamsPage() {
                   <TBody>
                     {detailPipelines.map((p) => (
                       <TR key={p.id}>
-                        <TD className="font-medium text-zinc-100">{p.name}</TD>
-                        <TD className="text-zinc-400">{p.repo || '—'}</TD>
-                        <TD className="text-zinc-500">{p.branch || '—'}</TD>
+                        <TD className="font-medium text-slate-100">{p.name}</TD>
+                        <TD className="text-slate-400">{p.repo || '—'}</TD>
+                        <TD className="text-slate-500">{p.branch || '—'}</TD>
                         <TD className="text-right">
                           <span className={`font-semibold ${riskColor(num(p.risk_score))}`}>
                             {num(p.risk_score).toFixed(0)}
@@ -554,9 +554,9 @@ export default function TeamsPage() {
 
             {/* Members */}
             <div>
-              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">Members</div>
+              <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">Members</div>
               {(detail.member_ids ?? []).length === 0 ? (
-                <p className="text-sm text-zinc-500">No members listed.</p>
+                <p className="text-sm text-slate-500">No members listed.</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {(detail.member_ids ?? []).map((m) => (
@@ -577,7 +577,7 @@ export default function TeamsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
       {children}
     </label>
   )
@@ -597,7 +597,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
     />
   )
 }

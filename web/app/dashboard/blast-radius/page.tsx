@@ -229,8 +229,8 @@ export default function BlastRadiusPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Blast Radius</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Blast Radius</h1>
+          <p className="mt-1 text-sm text-slate-500">
             What an attacker reaches if a pipeline is poisoned — ranked impact plus the attack-path graph.
           </p>
         </div>
@@ -295,17 +295,17 @@ export default function BlastRadiusPage() {
                       className={`w-full rounded-lg border px-3 py-2.5 text-left transition-colors ${
                         active
                           ? 'border-red-700/60 bg-red-950/20'
-                          : 'border-zinc-800 bg-zinc-950/50 hover:border-zinc-700'
+                          : 'border-slate-800 bg-slate-950/50 hover:border-slate-700'
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <span className="min-w-0 truncate font-mono text-xs text-zinc-300">
+                        <span className="min-w-0 truncate font-mono text-xs text-slate-300">
                           {r.pipeline_id.slice(0, 8)}
                         </span>
                         <Badge tone={scoreTone(r.score)}>{Math.round(r.score)}</Badge>
                       </div>
                       {/* score bar */}
-                      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-zinc-800">
+                      <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
                         <div
                           className="h-full rounded-full"
                           style={{
@@ -314,7 +314,7 @@ export default function BlastRadiusPage() {
                           }}
                         />
                       </div>
-                      <div className="mt-1.5 flex gap-3 text-[11px] text-zinc-500">
+                      <div className="mt-1.5 flex gap-3 text-[11px] text-slate-500">
                         <span>{r.reachable_resource_ids?.length ?? 0} res</span>
                         <span>{r.reachable_secret_ids?.length ?? 0} sec</span>
                         <span>{r.reachable_pipeline_ids?.length ?? 0} pipe</span>
@@ -340,7 +340,7 @@ export default function BlastRadiusPage() {
                   </CardHeader>
                   <CardBody className="space-y-4">
                     {selectedRow.summary && (
-                      <p className="text-sm text-zinc-400">{selectedRow.summary}</p>
+                      <p className="text-sm text-slate-400">{selectedRow.summary}</p>
                     )}
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                       <Stat label="Resources" value={selectedRow.reachable_resource_ids?.length ?? 0} />
@@ -355,12 +355,12 @@ export default function BlastRadiusPage() {
               <Card>
                 <CardHeader className="flex items-center justify-between">
                   <CardTitle>Attack-path graph</CardTitle>
-                  <span className="text-xs text-zinc-500">{visibleEdges.length} edge(s)</span>
+                  <span className="text-xs text-slate-500">{visibleEdges.length} edge(s)</span>
                 </CardHeader>
                 <CardBody>
                   {visibleEdges.length === 0 ? (
-                    <div className="py-8 text-center text-sm text-zinc-500">
-                      No attack-path edges. Use <span className="text-zinc-300">Rebuild graph</span> to derive them.
+                    <div className="py-8 text-center text-sm text-slate-500">
+                      No attack-path edges. Use <span className="text-slate-300">Rebuild graph</span> to derive them.
                     </div>
                   ) : (
                     <>
@@ -431,7 +431,7 @@ export default function BlastRadiusPage() {
                         </svg>
                       </div>
                       {/* legend */}
-                      <div className="mt-3 flex flex-wrap gap-3 text-xs text-zinc-400">
+                      <div className="mt-3 flex flex-wrap gap-3 text-xs text-slate-400">
                         {Object.entries(KIND_COLORS)
                           .filter(([k]) => k !== 'default')
                           .map(([k, c]) => (

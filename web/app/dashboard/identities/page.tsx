@@ -49,7 +49,7 @@ const blankTrust = {
 }
 
 function fieldClass() {
-  return 'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-red-500 focus:outline-none'
+  return 'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-red-500 focus:outline-none'
 }
 
 export default function IdentitiesPage() {
@@ -252,8 +252,8 @@ export default function IdentitiesPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Identities &amp; OIDC Trusts</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Identities &amp; OIDC Trusts</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Workload identities used by pipelines and the OIDC trust relationships that let them assume cloud roles.
           </p>
         </div>
@@ -290,11 +290,11 @@ export default function IdentitiesPage() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <div className="inline-flex rounded-lg border border-zinc-800 bg-zinc-900/60 p-1">
+        <div className="inline-flex rounded-lg border border-slate-800 bg-slate-900/60 p-1">
           <button
             onClick={() => setTab('identities')}
             className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-              tab === 'identities' ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'identities' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             Identities ({identities.length})
@@ -302,7 +302,7 @@ export default function IdentitiesPage() {
           <button
             onClick={() => setTab('oidc')}
             className={`rounded-md px-3 py-1.5 text-xs font-medium ${
-              tab === 'oidc' ? 'bg-red-600 text-white' : 'text-zinc-400 hover:text-zinc-100'
+              tab === 'oidc' ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-slate-100'
             }`}
           >
             OIDC Trusts ({trusts.length})
@@ -312,7 +312,7 @@ export default function IdentitiesPage() {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search..."
-          className="ml-auto rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-red-500 focus:outline-none"
+          className="ml-auto rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200 placeholder-slate-600 focus:border-red-500 focus:outline-none"
         />
       </div>
 
@@ -352,7 +352,7 @@ export default function IdentitiesPage() {
                     const trustCount = trusts.filter((t) => t.identity_id === i.id).length
                     return (
                       <TR key={i.id}>
-                        <TD className="font-medium text-zinc-200">{i.name}</TD>
+                        <TD className="font-medium text-slate-200">{i.name}</TD>
                         <TD>
                           <Badge tone="info">{i.identity_type ?? 'unknown'}</Badge>
                         </TD>
@@ -422,12 +422,12 @@ export default function IdentitiesPage() {
                     const loose = !t.is_branch_scoped || (t.sub_claim_pattern ?? '').includes('*')
                     return (
                       <TR key={t.id}>
-                        <TD className="font-medium text-zinc-200">
+                        <TD className="font-medium text-slate-200">
                           {identityName.get(t.identity_id) ?? t.identity_id}
                         </TD>
-                        <TD className="font-mono text-xs text-zinc-400">{t.issuer}</TD>
-                        <TD className="font-mono text-xs text-zinc-400">{t.audience ?? '-'}</TD>
-                        <TD className="font-mono text-xs text-zinc-400">{t.sub_claim_pattern ?? '-'}</TD>
+                        <TD className="font-mono text-xs text-slate-400">{t.issuer}</TD>
+                        <TD className="font-mono text-xs text-slate-400">{t.audience ?? '-'}</TD>
+                        <TD className="font-mono text-xs text-slate-400">{t.sub_claim_pattern ?? '-'}</TD>
                         <TD>
                           {t.is_branch_scoped ? (
                             <Badge tone="success">branch-scoped</Badge>
@@ -478,7 +478,7 @@ export default function IdentitiesPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Name</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Name</label>
             <input
               value={idForm.name}
               onChange={(e) => setIdForm({ ...idForm, name: e.target.value })}
@@ -488,7 +488,7 @@ export default function IdentitiesPage() {
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-400">Type</label>
+              <label className="mb-1 block text-xs font-medium text-slate-400">Type</label>
               <select
                 value={idForm.identity_type}
                 onChange={(e) => setIdForm({ ...idForm, identity_type: e.target.value })}
@@ -501,7 +501,7 @@ export default function IdentitiesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-zinc-400">Credential kind</label>
+              <label className="mb-1 block text-xs font-medium text-slate-400">Credential kind</label>
               <select
                 value={idForm.credential_kind}
                 onChange={(e) => setIdForm({ ...idForm, credential_kind: e.target.value })}
@@ -515,7 +515,7 @@ export default function IdentitiesPage() {
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Environment</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Environment</label>
             <input
               value={idForm.environment}
               onChange={(e) => setIdForm({ ...idForm, environment: e.target.value })}
@@ -523,7 +523,7 @@ export default function IdentitiesPage() {
               className={fieldClass()}
             />
           </div>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-slate-300">
             <input
               type="checkbox"
               checked={idForm.is_long_lived}
@@ -557,7 +557,7 @@ export default function IdentitiesPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Identity</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Identity</label>
             <select
               value={trustForm.identity_id}
               onChange={(e) => setTrustForm({ ...trustForm, identity_id: e.target.value })}
@@ -572,7 +572,7 @@ export default function IdentitiesPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Issuer</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Issuer</label>
             <input
               value={trustForm.issuer}
               onChange={(e) => setTrustForm({ ...trustForm, issuer: e.target.value })}
@@ -580,7 +580,7 @@ export default function IdentitiesPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Audience</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Audience</label>
             <input
               value={trustForm.audience}
               onChange={(e) => setTrustForm({ ...trustForm, audience: e.target.value })}
@@ -588,17 +588,17 @@ export default function IdentitiesPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Sub claim pattern</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Sub claim pattern</label>
             <input
               value={trustForm.sub_claim_pattern}
               onChange={(e) => setTrustForm({ ...trustForm, sub_claim_pattern: e.target.value })}
               className={`${fieldClass()} font-mono`}
             />
-            <p className="mt-1 text-xs text-zinc-600">
+            <p className="mt-1 text-xs text-slate-600">
               Tighten this to a specific repo and ref to avoid a wildcard trust.
             </p>
           </div>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-slate-300">
             <input
               type="checkbox"
               checked={trustForm.is_branch_scoped}

@@ -288,15 +288,15 @@ export default function ProvidersPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Providers & Connections</h1>
-          <p className="mt-1 text-sm text-zinc-500">SCM/CI providers and the ingestion runs that populate your inventory.</p>
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Providers & Connections</h1>
+          <p className="mt-1 text-sm text-slate-500">SCM/CI providers and the ingestion runs that populate your inventory.</p>
         </div>
         <div className="flex items-center gap-2">
           {workspaces.length > 1 && (
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -328,7 +328,7 @@ export default function ProvidersPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search providers..."
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 />
                 <Button size="sm" variant="secondary" onClick={refresh} disabled={loading}>
                   Refresh
@@ -365,12 +365,12 @@ export default function ProvidersPage() {
                       const connCount = connections.filter((c) => c.provider_id === p.id).length
                       return (
                         <TR key={p.id}>
-                          <TD className="font-medium text-zinc-100">{p.name}</TD>
+                          <TD className="font-medium text-slate-100">{p.name}</TD>
                           <TD>
                             <Badge tone="info">{p.kind}</Badge>
                           </TD>
                           <TD>{p.org || '—'}</TD>
-                          <TD className="max-w-[200px] truncate text-zinc-500">{p.base_url || '—'}</TD>
+                          <TD className="max-w-[200px] truncate text-slate-500">{p.base_url || '—'}</TD>
                           <TD>
                             <Badge tone={statusTone(p.status)}>{p.status || 'unknown'}</Badge>
                           </TD>
@@ -434,13 +434,13 @@ export default function ProvidersPage() {
                   <TBody>
                     {connections.map((c) => (
                       <TR key={c.id}>
-                        <TD className="font-medium text-zinc-100">{c.label}</TD>
+                        <TD className="font-medium text-slate-100">{c.label}</TD>
                         <TD>{providerName(c.provider_id)}</TD>
-                        <TD className="text-zinc-500">{c.scope || '—'}</TD>
+                        <TD className="text-slate-500">{c.scope || '—'}</TD>
                         <TD>
                           <Badge tone={statusTone(c.status)}>{c.status || 'idle'}</Badge>
                         </TD>
-                        <TD className="text-zinc-500">{fmtDate(c.last_synced_at)}</TD>
+                        <TD className="text-slate-500">{fmtDate(c.last_synced_at)}</TD>
                         <TD className="max-w-[200px] truncate text-red-400">{c.last_error || '—'}</TD>
                         <TD className="text-right">
                           <div className="flex justify-end gap-2">
@@ -492,7 +492,7 @@ export default function ProvidersPage() {
             <select
               value={pForm.kind}
               onChange={(e) => setPForm({ ...pForm, kind: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {PROVIDER_KINDS.map((k) => (
                 <option key={k} value={k}>
@@ -518,7 +518,7 @@ export default function ProvidersPage() {
             <select
               value={pForm.status}
               onChange={(e) => setPForm({ ...pForm, status: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {['active', 'paused', 'error'].map((s) => (
                 <option key={s} value={s}>
@@ -551,7 +551,7 @@ export default function ProvidersPage() {
             <select
               value={cForm.provider_id}
               onChange={(e) => setCForm({ ...cForm, provider_id: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               <option value="">Select a provider</option>
               {providers.map((p) => (
@@ -571,7 +571,7 @@ export default function ProvidersPage() {
               placeholder="org:acme-corp or repo:acme/api"
             />
           </Field>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-slate-500">
             After creating, use Sync now to deterministically ingest pipelines, identities, actions, and secrets.
           </p>
         </div>
@@ -583,7 +583,7 @@ export default function ProvidersPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
       {children}
     </label>
   )
@@ -603,7 +603,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
     />
   )
 }

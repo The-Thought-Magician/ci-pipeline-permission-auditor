@@ -296,8 +296,8 @@ export default function ActionsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Third-Party Action Risk Map</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Third-Party Action Risk Map</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Every Action, include, and plugin — pin type, publisher trust, inherited privilege, and usage.
           </p>
         </div>
@@ -341,15 +341,15 @@ export default function ActionsPage() {
                 </CardHeader>
                 <CardBody className="space-y-2">
                   {riskBuckets[level].length === 0 ? (
-                    <div className="py-4 text-center text-xs text-zinc-600">None</div>
+                    <div className="py-4 text-center text-xs text-slate-600">None</div>
                   ) : (
                     riskBuckets[level].map((a) => (
                       <button
                         key={a.id}
                         onClick={() => openDetail(a)}
-                        className="flex w-full items-center justify-between gap-2 rounded-lg border border-zinc-800 bg-zinc-950/50 px-3 py-2 text-left hover:border-red-800/60"
+                        className="flex w-full items-center justify-between gap-2 rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2 text-left hover:border-red-800/60"
                       >
-                        <span className="min-w-0 truncate text-xs font-medium text-zinc-200">{a.name}</span>
+                        <span className="min-w-0 truncate text-xs font-medium text-slate-200">{a.name}</span>
                         {isMutablePin(a) && (
                           <span
                             className="h-2 w-2 shrink-0 rounded-full bg-red-500"
@@ -372,12 +372,12 @@ export default function ActionsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search name or publisher..."
-                  className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                  className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
                 />
                 <select
                   value={riskFilter}
                   onChange={(e) => setRiskFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All risk</option>
                   {RISK_LEVELS.map((r) => (
@@ -389,7 +389,7 @@ export default function ActionsPage() {
                 <select
                   value={pinFilter}
                   onChange={(e) => setPinFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All pins</option>
                   <option value="mutable">Mutable only</option>
@@ -432,7 +432,7 @@ export default function ActionsPage() {
                         <TD>
                           <button
                             onClick={() => openDetail(a)}
-                            className="text-left font-medium text-zinc-100 hover:text-red-300"
+                            className="text-left font-medium text-slate-100 hover:text-red-300"
                           >
                             {a.name}
                           </button>
@@ -445,7 +445,7 @@ export default function ActionsPage() {
                         </TD>
                         <TD>
                           <div className="flex items-center gap-1.5">
-                            <span className="text-zinc-300">{a.publisher || '—'}</span>
+                            <span className="text-slate-300">{a.publisher || '—'}</span>
                             {a.is_verified_publisher ? (
                               <Badge tone="success">verified</Badge>
                             ) : (
@@ -457,14 +457,14 @@ export default function ActionsPage() {
                           <div className="flex items-center gap-1.5">
                             <Badge tone={isMutablePin(a) ? 'critical' : 'success'}>{a.pin_type}</Badge>
                             {a.pin_ref && (
-                              <code className="text-xs text-zinc-500">{a.pin_ref.slice(0, 14)}</code>
+                              <code className="text-xs text-slate-500">{a.pin_ref.slice(0, 14)}</code>
                             )}
                           </div>
                         </TD>
                         <TD>
                           <Badge tone={riskTone(a.risk_level)}>{a.risk_level}</Badge>
                         </TD>
-                        <TD className="text-zinc-400">{a.usage_count}</TD>
+                        <TD className="text-slate-400">{a.usage_count}</TD>
                         <TD>
                           <div className="flex justify-end gap-1.5">
                             {isMutablePin(a) && (
@@ -515,29 +515,29 @@ export default function ActionsPage() {
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <label className="col-span-2 text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Name</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Name</span>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="actions/checkout"
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
             />
           </label>
           <label className="text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Publisher</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Publisher</span>
             <input
               value={form.publisher}
               onChange={(e) => setForm((f) => ({ ...f, publisher: e.target.value }))}
               placeholder="github"
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
             />
           </label>
           <label className="text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Risk level</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Risk level</span>
             <select
               value={form.risk_level}
               onChange={(e) => setForm((f) => ({ ...f, risk_level: e.target.value }))}
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
             >
               {RISK_LEVELS.map((r) => (
                 <option key={r} value={r}>
@@ -547,11 +547,11 @@ export default function ActionsPage() {
             </select>
           </label>
           <label className="text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Pin type</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Pin type</span>
             <select
               value={form.pin_type}
               onChange={(e) => setForm((f) => ({ ...f, pin_type: e.target.value }))}
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
             >
               {PIN_TYPES.map((p) => (
                 <option key={p} value={p}>
@@ -561,48 +561,48 @@ export default function ActionsPage() {
             </select>
           </label>
           <label className="text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Pin ref</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Pin ref</span>
             <input
               value={form.pin_ref}
               onChange={(e) => setForm((f) => ({ ...f, pin_ref: e.target.value }))}
               placeholder="v4 or commit sha"
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
             />
           </label>
           <label className="text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Usage count</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Usage count</span>
             <input
               type="number"
               min={0}
               value={form.usage_count}
               onChange={(e) => setForm((f) => ({ ...f, usage_count: Number(e.target.value) }))}
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
             />
           </label>
           <label className="col-span-2 text-sm">
-            <span className="text-xs uppercase tracking-wide text-zinc-500">Inherited privileges (comma-separated)</span>
+            <span className="text-xs uppercase tracking-wide text-slate-500">Inherited privileges (comma-separated)</span>
             <input
               value={form.inherited_privileges}
               onChange={(e) => setForm((f) => ({ ...f, inherited_privileges: e.target.value }))}
               placeholder="contents:write, id-token:write"
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
             />
           </label>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-slate-300">
             <input
               type="checkbox"
               checked={form.is_verified_publisher}
               onChange={(e) => setForm((f) => ({ ...f, is_verified_publisher: e.target.checked }))}
-              className="h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-red-600"
+              className="h-4 w-4 rounded border-slate-700 bg-slate-900 accent-red-600"
             />
             Verified publisher
           </label>
-          <label className="flex items-center gap-2 text-sm text-zinc-300">
+          <label className="flex items-center gap-2 text-sm text-slate-300">
             <input
               type="checkbox"
               checked={form.is_deprecated}
               onChange={(e) => setForm((f) => ({ ...f, is_deprecated: e.target.checked }))}
-              className="h-4 w-4 rounded border-zinc-700 bg-zinc-900 accent-red-600"
+              className="h-4 w-4 rounded border-slate-700 bg-slate-900 accent-red-600"
             />
             Deprecated
           </label>
@@ -646,23 +646,23 @@ export default function ActionsPage() {
               {detail.is_deprecated && <Badge tone="warning">deprecated</Badge>}
             </div>
 
-            <div className="grid grid-cols-2 gap-3 text-zinc-300">
+            <div className="grid grid-cols-2 gap-3 text-slate-300">
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Publisher</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Publisher</div>
                 <div>{detail.publisher || '—'}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Pin ref</div>
-                <code className="text-xs text-zinc-400">{detail.pin_ref || '—'}</code>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Pin ref</div>
+                <code className="text-xs text-slate-400">{detail.pin_ref || '—'}</code>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-zinc-500">Usage count</div>
+                <div className="text-xs uppercase tracking-wide text-slate-500">Usage count</div>
                 <div>{detail.usage_count}</div>
               </div>
             </div>
 
             <div>
-              <div className="mb-1 text-xs uppercase tracking-wide text-zinc-500">Inherited privileges</div>
+              <div className="mb-1 text-xs uppercase tracking-wide text-slate-500">Inherited privileges</div>
               {detail.inherited_privileges?.length ? (
                 <div className="flex flex-wrap gap-1.5">
                   {detail.inherited_privileges.map((p) => (
@@ -672,7 +672,7 @@ export default function ActionsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-zinc-500">None recorded</div>
+                <div className="text-slate-500">None recorded</div>
               )}
             </div>
 
@@ -685,7 +685,7 @@ export default function ActionsPage() {
             )}
 
             <div>
-              <div className="mb-1 text-xs uppercase tracking-wide text-zinc-500">Affected pipelines</div>
+              <div className="mb-1 text-xs uppercase tracking-wide text-slate-500">Affected pipelines</div>
               {detailLoading ? (
                 <Spinner label="Loading affected pipelines..." />
               ) : detail.pipelines?.length ? (
@@ -693,15 +693,15 @@ export default function ActionsPage() {
                   {detail.pipelines.map((p) => (
                     <li
                       key={p.id}
-                      className="rounded-lg border border-zinc-800 bg-zinc-950/50 px-3 py-1.5 text-zinc-300"
+                      className="rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-1.5 text-slate-300"
                     >
                       {p.name}
-                      {p.repo && <span className="ml-2 text-xs text-zinc-500">{p.repo}</span>}
+                      {p.repo && <span className="ml-2 text-xs text-slate-500">{p.repo}</span>}
                     </li>
                   ))}
                 </ul>
               ) : (
-                <div className="text-zinc-500">No pipelines reference this action.</div>
+                <div className="text-slate-500">No pipelines reference this action.</div>
               )}
             </div>
           </div>

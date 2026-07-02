@@ -168,8 +168,8 @@ export default function AnalyzerPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Workflow Analyzer</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Workflow Analyzer</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Paste any CI workflow to get an inline least-privilege and risk read-out. Nothing is stored, this is a
             throwaway analysis.
           </p>
@@ -178,7 +178,7 @@ export default function AnalyzerPage() {
           <select
             value={format}
             onChange={(e) => setFormat(e.target.value)}
-            className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             {FORMATS.map((f) => (
               <option key={f.value} value={f.value}>
@@ -196,7 +196,7 @@ export default function AnalyzerPage() {
       <Card>
         <CardHeader className="flex items-center justify-between">
           <CardTitle>Workflow source</CardTitle>
-          <button className="text-xs text-zinc-500 hover:text-zinc-300" onClick={() => setSource(SAMPLE)}>
+          <button className="text-xs text-slate-500 hover:text-slate-300" onClick={() => setSource(SAMPLE)}>
             Load sample
           </button>
         </CardHeader>
@@ -207,7 +207,7 @@ export default function AnalyzerPage() {
             rows={16}
             spellCheck={false}
             placeholder="Paste your .github/workflows/*.yml, .gitlab-ci.yml, or Jenkinsfile here..."
-            className="w-full resize-y rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-xs leading-relaxed text-zinc-200 placeholder:text-zinc-600"
+            className="w-full resize-y rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs leading-relaxed text-slate-200 placeholder:text-slate-600"
           />
           <div className="flex flex-wrap items-center gap-2">
             <Button onClick={runAnalyze} disabled={busy || !source.trim()}>
@@ -219,7 +219,7 @@ export default function AnalyzerPage() {
             <Button variant="ghost" onClick={reset} disabled={busy}>
               Clear
             </Button>
-            <span className="ml-auto text-xs text-zinc-600">{source.length} chars</span>
+            <span className="ml-auto text-xs text-slate-600">{source.length} chars</span>
           </div>
         </CardBody>
       </Card>
@@ -265,16 +265,16 @@ export default function AnalyzerPage() {
                 {findings.map((f, i) => (
                   <div
                     key={i}
-                    className="rounded-lg border border-zinc-800 bg-zinc-900/60 px-4 py-3"
+                    className="rounded-lg border border-slate-800 bg-slate-900/60 px-4 py-3"
                   >
                     <div className="flex flex-wrap items-center gap-2">
                       <Badge tone={severityTone(f.severity)}>{f.severity}</Badge>
-                      {f.detector && <span className="text-xs text-zinc-500">{f.detector}</span>}
-                      <span className="font-medium text-zinc-100">{f.title}</span>
+                      {f.detector && <span className="text-xs text-slate-500">{f.detector}</span>}
+                      <span className="font-medium text-slate-100">{f.title}</span>
                     </div>
-                    {f.description && <p className="mt-1 text-sm text-zinc-400">{f.description}</p>}
+                    {f.description && <p className="mt-1 text-sm text-slate-400">{f.description}</p>}
                     {f.evidence != null && (
-                      <pre className="mt-2 max-h-40 overflow-auto rounded-md border border-zinc-800 bg-zinc-950 p-2 text-xs text-zinc-400">
+                      <pre className="mt-2 max-h-40 overflow-auto rounded-md border border-slate-800 bg-slate-950 p-2 text-xs text-slate-400">
                         {typeof f.evidence === 'string' ? f.evidence : JSON.stringify(f.evidence, null, 2)}
                       </pre>
                     )}
@@ -295,11 +295,11 @@ export default function AnalyzerPage() {
             {(() => {
               const recs = permEntries(analysis.recommended_permissions as Record<string, unknown> | undefined)
               if (recs.length === 0) {
-                return <p className="text-sm text-zinc-500">No recommended permission set was returned.</p>
+                return <p className="text-sm text-slate-500">No recommended permission set was returned.</p>
               }
               return (
                 <div className="space-y-3">
-                  <p className="text-sm text-zinc-400">
+                  <p className="text-sm text-slate-400">
                     Replace the declared permission block with this least-privilege set:
                   </p>
                   <pre className="overflow-auto rounded-lg border border-emerald-900 bg-emerald-950/20 p-3 text-xs text-emerald-300">
@@ -322,7 +322,7 @@ export default function AnalyzerPage() {
               {(() => {
                 const entries = permEntries(parsed.permissions as Record<string, unknown> | string | undefined)
                 if (entries.length === 0) {
-                  return <p className="text-sm text-zinc-500">No top-level permissions block declared.</p>
+                  return <p className="text-sm text-slate-500">No top-level permissions block declared.</p>
                 }
                 return (
                   <div className="flex flex-wrap gap-2">
@@ -346,7 +346,7 @@ export default function AnalyzerPage() {
             </CardHeader>
             <CardBody>
               {secretsList.length === 0 ? (
-                <p className="text-sm text-zinc-500">No secrets referenced.</p>
+                <p className="text-sm text-slate-500">No secrets referenced.</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {secretsList.map((s) => (
@@ -365,7 +365,7 @@ export default function AnalyzerPage() {
             </CardHeader>
             <CardBody>
               {usesList.length === 0 ? (
-                <p className="text-sm text-zinc-500">No third-party Actions detected.</p>
+                <p className="text-sm text-slate-500">No third-party Actions detected.</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {usesList.map((u) => {
@@ -388,13 +388,13 @@ export default function AnalyzerPage() {
             </CardHeader>
             <CardBody>
               {jobs.length === 0 && steps.length === 0 ? (
-                <p className="text-sm text-zinc-500">No jobs or steps parsed.</p>
+                <p className="text-sm text-slate-500">No jobs or steps parsed.</p>
               ) : jobs.length > 0 ? (
                 <div className="space-y-4">
                   {jobs.map((job, i) => (
-                    <div key={i} className="rounded-lg border border-zinc-800 bg-zinc-900/40 p-3">
+                    <div key={i} className="rounded-lg border border-slate-800 bg-slate-900/40 p-3">
                       <div className="mb-2 flex flex-wrap items-center gap-2">
-                        <span className="font-medium text-zinc-100">{job.name || job.id || `job ${i + 1}`}</span>
+                        <span className="font-medium text-slate-100">{job.name || job.id || `job ${i + 1}`}</span>
                         {permEntries(job.permissions as Record<string, unknown> | string | undefined).map((p) => (
                           <Badge key={p.key} tone="neutral">
                             {p.key}: {p.value}
@@ -404,18 +404,18 @@ export default function AnalyzerPage() {
                       {(job.steps ?? []).length > 0 ? (
                         <ol className="space-y-1 text-sm">
                           {(job.steps ?? []).map((st, j) => (
-                            <li key={j} className="flex items-start gap-2 text-zinc-400">
-                              <span className="text-zinc-600">{j + 1}.</span>
+                            <li key={j} className="flex items-start gap-2 text-slate-400">
+                              <span className="text-slate-600">{j + 1}.</span>
                               <span>
-                                {st.name && <span className="text-zinc-300">{st.name} </span>}
+                                {st.name && <span className="text-slate-300">{st.name} </span>}
                                 {st.uses && <span className="font-mono text-xs text-sky-400">uses: {st.uses}</span>}
-                                {st.run && <span className="font-mono text-xs text-zinc-500">run: {String(st.run).slice(0, 80)}</span>}
+                                {st.run && <span className="font-mono text-xs text-slate-500">run: {String(st.run).slice(0, 80)}</span>}
                               </span>
                             </li>
                           ))}
                         </ol>
                       ) : (
-                        <p className="text-xs text-zinc-600">No steps in this job.</p>
+                        <p className="text-xs text-slate-600">No steps in this job.</p>
                       )}
                     </div>
                   ))}
@@ -432,13 +432,13 @@ export default function AnalyzerPage() {
                   <TBody>
                     {steps.map((st, i) => (
                       <TR key={i}>
-                        <TD className="text-zinc-600">{i + 1}</TD>
+                        <TD className="text-slate-600">{i + 1}</TD>
                         <TD>{st.name || '—'}</TD>
                         <TD className="font-mono text-xs">
                           {st.uses ? (
                             <span className="text-sky-400">{st.uses}</span>
                           ) : st.run ? (
-                            <span className="text-zinc-500">{String(st.run).slice(0, 120)}</span>
+                            <span className="text-slate-500">{String(st.run).slice(0, 120)}</span>
                           ) : (
                             '—'
                           )}

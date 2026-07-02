@@ -244,8 +244,8 @@ export default function EvidencePage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Compliance Evidence</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Compliance Evidence</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Generate SOC 2 and SLSA evidence packs straight from your CI posture, and track control coverage at a
             glance.
           </p>
@@ -255,7 +255,7 @@ export default function EvidencePage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -310,21 +310,21 @@ export default function EvidencePage() {
                 </CardHeader>
                 <CardBody>
                   {coverage.length === 0 ? (
-                    <p className="text-sm text-zinc-500">
+                    <p className="text-sm text-slate-500">
                       No coverage data yet. Generate an evidence pack to populate control status.
                     </p>
                   ) : (
                     <div className="space-y-5">
                       {Object.entries(coverageByFramework).map(([fw, rows]) => (
                         <div key={fw}>
-                          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-zinc-500">{fw}</div>
+                          <div className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{fw}</div>
                           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
                             {rows.map((row) => (
                               <div
                                 key={`${fw}-${row.control}`}
-                                className="flex items-center justify-between rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2"
+                                className="flex items-center justify-between rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2"
                               >
-                                <span className="truncate text-sm text-zinc-200" title={row.control}>
+                                <span className="truncate text-sm text-slate-200" title={row.control}>
                                   {row.control}
                                 </span>
                                 <Badge tone={coverageTone(row.status)}>{row.status}</Badge>
@@ -345,7 +345,7 @@ export default function EvidencePage() {
                   <select
                     value={frameworkFilter}
                     onChange={(e) => setFrameworkFilter(e.target.value)}
-                    className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200"
+                    className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200"
                   >
                     <option value="all">All frameworks</option>
                     {frameworks.map((f) => (
@@ -389,7 +389,7 @@ export default function EvidencePage() {
                           <TR key={p.id}>
                             <TD>
                               <button
-                                className="font-medium text-zinc-100 hover:text-red-400"
+                                className="font-medium text-slate-100 hover:text-red-400"
                                 onClick={() => openDetail(p.id)}
                               >
                                 {p.title || `${p.framework} ${p.control}`}
@@ -399,13 +399,13 @@ export default function EvidencePage() {
                               <Badge tone="info">{p.framework}</Badge>
                             </TD>
                             <TD>
-                              <span className="font-mono text-xs text-zinc-400">{p.control}</span>
+                              <span className="font-mono text-xs text-slate-400">{p.control}</span>
                             </TD>
                             <TD>
                               <Badge tone={coverageTone(p.status || '')}>{p.status || 'generated'}</Badge>
                             </TD>
                             <TD>
-                              <span className="text-xs text-zinc-500">{fmt(p.generated_at || p.created_at)}</span>
+                              <span className="text-xs text-slate-500">{fmt(p.generated_at || p.created_at)}</span>
                             </TD>
                             <TD className="text-right">
                               <div className="flex justify-end gap-2">
@@ -445,12 +445,12 @@ export default function EvidencePage() {
           <div className="space-y-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <div className="text-lg font-semibold text-zinc-100">
+                <div className="text-lg font-semibold text-slate-100">
                   {detail.title || `${detail.framework} ${detail.control}`}
                 </div>
                 <div className="mt-1 flex items-center gap-2">
                   <Badge tone="info">{detail.framework}</Badge>
-                  <span className="font-mono text-xs text-zinc-500">{detail.control}</span>
+                  <span className="font-mono text-xs text-slate-500">{detail.control}</span>
                   <Badge tone={coverageTone(detail.status || '')}>{detail.status || 'generated'}</Badge>
                 </div>
               </div>
@@ -458,16 +458,16 @@ export default function EvidencePage() {
                 Export JSON
               </Button>
             </div>
-            <div className="text-xs text-zinc-500">Generated {fmt(detail.generated_at || detail.created_at)}</div>
+            <div className="text-xs text-slate-500">Generated {fmt(detail.generated_at || detail.created_at)}</div>
             {detail.share_token && (
-              <div className="rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-xs">
-                <span className="text-zinc-500">Share token: </span>
-                <span className="font-mono text-zinc-300">{detail.share_token}</span>
+              <div className="rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-xs">
+                <span className="text-slate-500">Share token: </span>
+                <span className="font-mono text-slate-300">{detail.share_token}</span>
               </div>
             )}
             <div>
-              <div className="mb-1 text-xs uppercase text-zinc-500">Contents</div>
-              <pre className="max-h-96 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-300">
+              <div className="mb-1 text-xs uppercase text-slate-500">Contents</div>
+              <pre className="max-h-96 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300">
                 {JSON.stringify(detail.contents ?? {}, null, 2)}
               </pre>
             </div>
@@ -514,11 +514,11 @@ function GenerateForm({
     >
       <div className="space-y-4">
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Framework</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Framework</label>
           <select
             value={framework}
             onChange={(e) => onFrameworkChange(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             {Object.entries(FRAMEWORKS).map(([id, f]) => (
               <option key={id} value={id}>
@@ -528,11 +528,11 @@ function GenerateForm({
           </select>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Control</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Control</label>
           <select
             value={control}
             onChange={(e) => setControl(e.target.value)}
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           >
             {controls.map((c) => (
               <option key={c.id} value={c.id}>
@@ -541,7 +541,7 @@ function GenerateForm({
             ))}
           </select>
         </div>
-        <p className="text-xs text-zinc-500">
+        <p className="text-xs text-slate-500">
           The pack bundles current inventory, findings, secret hygiene, drift history, and remediation status mapped to
           the selected control.
         </p>

@@ -37,7 +37,7 @@ interface BillingPlan {
 const SEVERITY_KEYS = ['critical', 'high', 'medium', 'low'] as const
 
 function fieldClass() {
-  return 'w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-red-500 focus:outline-none'
+  return 'w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:border-red-500 focus:outline-none'
 }
 
 function fmtDate(s?: string | null) {
@@ -242,8 +242,8 @@ export default function SettingsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Settings</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Settings</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Workspace configuration, severity thresholds, billing, and sample data.
           </p>
         </div>
@@ -265,7 +265,7 @@ export default function SettingsPage() {
 
       {workspaces.length > 1 && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs uppercase tracking-wide text-zinc-500">Workspace:</span>
+          <span className="text-xs uppercase tracking-wide text-slate-500">Workspace:</span>
           {workspaces.map((w) => (
             <button
               key={w.id}
@@ -273,7 +273,7 @@ export default function SettingsPage() {
               className={`rounded-lg border px-3 py-1.5 text-xs font-medium ${
                 w.id === activeId
                   ? 'border-red-700 bg-red-950/50 text-red-200'
-                  : 'border-zinc-800 bg-zinc-900/60 text-zinc-400 hover:text-zinc-100'
+                  : 'border-slate-800 bg-slate-900/60 text-slate-400 hover:text-slate-100'
               }`}
             >
               {w.name}
@@ -304,7 +304,7 @@ export default function SettingsPage() {
               </CardHeader>
               <CardBody className="space-y-4">
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-zinc-400">Name</label>
+                  <label className="mb-1 block text-xs font-medium text-slate-400">Name</label>
                   <input
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -312,15 +312,15 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-zinc-400">Slug</label>
+                  <label className="mb-1 block text-xs font-medium text-slate-400">Slug</label>
                   <input
                     value={active.slug ?? ''}
                     readOnly
-                    className={`${fieldClass()} cursor-not-allowed font-mono text-zinc-500`}
+                    className={`${fieldClass()} cursor-not-allowed font-mono text-slate-500`}
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-zinc-400">Description</label>
+                  <label className="mb-1 block text-xs font-medium text-slate-400">Description</label>
                   <textarea
                     value={form.description}
                     onChange={(e) => setForm({ ...form, description: e.target.value })}
@@ -329,7 +329,7 @@ export default function SettingsPage() {
                   />
                 </div>
                 <div>
-                  <label className="mb-1 block text-xs font-medium text-zinc-400">
+                  <label className="mb-1 block text-xs font-medium text-slate-400">
                     Secret rotation age (days)
                   </label>
                   <input
@@ -341,7 +341,7 @@ export default function SettingsPage() {
                     }
                     className={`${fieldClass()} max-w-[10rem]`}
                   />
-                  <p className="mt-1 text-xs text-zinc-600">
+                  <p className="mt-1 text-xs text-slate-600">
                     Secrets older than this are flagged as overdue for rotation.
                   </p>
                 </div>
@@ -358,13 +358,13 @@ export default function SettingsPage() {
                 <CardTitle>Severity thresholds</CardTitle>
               </CardHeader>
               <CardBody>
-                <p className="mb-4 text-xs text-zinc-500">
+                <p className="mb-4 text-xs text-slate-500">
                   Risk-score boundaries that map a finding or pipeline to each severity band (0-100).
                 </p>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                   {SEVERITY_KEYS.map((k) => (
                     <div key={k}>
-                      <label className="mb-1 flex items-center gap-2 text-xs font-medium text-zinc-400">
+                      <label className="mb-1 flex items-center gap-2 text-xs font-medium text-slate-400">
                         <Badge tone={k}>{k}</Badge>
                       </label>
                       <input
@@ -396,7 +396,7 @@ export default function SettingsPage() {
                 <CardTitle>Sample data</CardTitle>
               </CardHeader>
               <CardBody>
-                <p className="mb-4 text-sm text-zinc-400">
+                <p className="mb-4 text-sm text-slate-400">
                   Seed a fully-populated demo workspace (providers, pipelines, identities, findings,
                   policies, snapshots and more), or reset it to start clean.
                 </p>
@@ -429,29 +429,29 @@ export default function SettingsPage() {
                   hint={priceLabel(billing?.plan?.price_cents)}
                   accent={isPro ? 'emerald' : 'default'}
                 />
-                <div className="space-y-1 text-xs text-zinc-500">
+                <div className="space-y-1 text-xs text-slate-500">
                   <div className="flex justify-between">
                     <span>Status</span>
-                    <span className="text-zinc-300">
+                    <span className="text-slate-300">
                       {billing?.subscription?.status ?? 'active'}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Renews</span>
-                    <span className="text-zinc-300">
+                    <span className="text-slate-300">
                       {fmtDate(billing?.subscription?.current_period_end)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Stripe</span>
-                    <span className="text-zinc-300">
+                    <span className="text-slate-300">
                       {billing?.stripeEnabled ? 'connected' : 'not configured'}
                     </span>
                   </div>
                 </div>
 
                 {!billing?.stripeEnabled ? (
-                  <p className="rounded-lg border border-zinc-800 bg-zinc-900/60 px-3 py-2 text-xs text-zinc-500">
+                  <p className="rounded-lg border border-slate-800 bg-slate-900/60 px-3 py-2 text-xs text-slate-500">
                     Billing is not configured on this deployment. Set Stripe keys to enable
                     upgrades.
                   </p>
@@ -476,18 +476,18 @@ export default function SettingsPage() {
               <CardHeader>
                 <CardTitle>Details</CardTitle>
               </CardHeader>
-              <CardBody className="space-y-2 text-xs text-zinc-500">
+              <CardBody className="space-y-2 text-xs text-slate-500">
                 <div className="flex justify-between gap-3">
                   <span>Workspace ID</span>
-                  <span className="truncate font-mono text-zinc-400">{active.id}</span>
+                  <span className="truncate font-mono text-slate-400">{active.id}</span>
                 </div>
                 <div className="flex justify-between gap-3">
                   <span>Created</span>
-                  <span className="text-zinc-400">{fmtDate(active.created_at)}</span>
+                  <span className="text-slate-400">{fmtDate(active.created_at)}</span>
                 </div>
                 <div className="flex justify-between gap-3">
                   <span>Total workspaces</span>
-                  <span className="text-zinc-400">{workspaces.length}</span>
+                  <span className="text-slate-400">{workspaces.length}</span>
                 </div>
               </CardBody>
             </Card>
@@ -512,7 +512,7 @@ export default function SettingsPage() {
       >
         <div className="space-y-4">
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Name</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Name</label>
             <input
               value={createForm.name}
               onChange={(e) => setCreateForm({ ...createForm, name: e.target.value })}
@@ -521,7 +521,7 @@ export default function SettingsPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">
+            <label className="mb-1 block text-xs font-medium text-slate-400">
               Slug (optional)
             </label>
             <input
@@ -532,7 +532,7 @@ export default function SettingsPage() {
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-zinc-400">Description</label>
+            <label className="mb-1 block text-xs font-medium text-slate-400">Description</label>
             <textarea
               value={createForm.description}
               onChange={(e) => setCreateForm({ ...createForm, description: e.target.value })}

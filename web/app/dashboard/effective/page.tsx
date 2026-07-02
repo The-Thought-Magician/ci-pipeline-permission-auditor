@@ -175,8 +175,8 @@ export default function EffectivePermissionsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Effective Permissions</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Effective Permissions</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Resolved permissions per pipeline with full source chains and excess-privilege flags.
           </p>
         </div>
@@ -210,7 +210,7 @@ export default function EffectivePermissionsPage() {
             <select
               value={pipelineFilter}
               onChange={(e) => setPipelineFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200 focus:border-red-500 focus:outline-none"
             >
               <option value="all">All pipelines</option>
               {pipelines.map((p) => (
@@ -222,7 +222,7 @@ export default function EffectivePermissionsPage() {
             <select
               value={categoryFilter}
               onChange={(e) => setCategoryFilter(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200 focus:border-red-500 focus:outline-none"
             >
               <option value="all">All categories</option>
               {categories.map((c) => (
@@ -231,7 +231,7 @@ export default function EffectivePermissionsPage() {
                 </option>
               ))}
             </select>
-            <label className="flex items-center gap-2 text-xs text-zinc-400">
+            <label className="flex items-center gap-2 text-xs text-slate-400">
               <input
                 type="checkbox"
                 checked={excessOnly}
@@ -244,7 +244,7 @@ export default function EffectivePermissionsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search action / category..."
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-red-500 focus:outline-none"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200 placeholder-slate-600 focus:border-red-500 focus:outline-none"
             />
           </div>
         </CardHeader>
@@ -284,14 +284,14 @@ export default function EffectivePermissionsPage() {
                   const isOpen = !!expanded[p.id]
                   return (
                     <TR key={p.id}>
-                      <TD className="font-medium text-zinc-200">
+                      <TD className="font-medium text-slate-200">
                         {pipelineName.get(p.pipeline_id) ?? p.pipeline_id}
                       </TD>
-                      <TD className="font-mono text-xs text-zinc-300">{p.action}</TD>
+                      <TD className="font-mono text-xs text-slate-300">{p.action}</TD>
                       <TD>{p.category ? <Badge tone="info">{p.category}</Badge> : '-'}</TD>
                       <TD>
                         {links.length === 0 ? (
-                          <span className="text-xs text-zinc-600">no chain</span>
+                          <span className="text-xs text-slate-600">no chain</span>
                         ) : (
                           <div>
                             <button
@@ -303,8 +303,8 @@ export default function EffectivePermissionsPage() {
                             {isOpen && (
                               <ol className="mt-2 space-y-1">
                                 {links.map((l, i) => (
-                                  <li key={i} className="flex items-center gap-2 text-xs text-zinc-400">
-                                    <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-zinc-800 text-[10px] text-zinc-500">
+                                  <li key={i} className="flex items-center gap-2 text-xs text-slate-400">
+                                    <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-slate-800 text-[10px] text-slate-500">
                                       {i + 1}
                                     </span>
                                     {typeof l !== 'string' && l.kind && (

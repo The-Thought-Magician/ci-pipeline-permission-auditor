@@ -270,8 +270,8 @@ export default function ReportsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Reports</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Reports</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Generate executive summaries, pipeline deep-dives, blast-radius and secret-hygiene reports — view and export.
           </p>
         </div>
@@ -280,7 +280,7 @@ export default function ReportsPage() {
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -318,12 +318,12 @@ export default function ReportsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search reports..."
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 />
                 <select
                   value={kindFilter}
                   onChange={(e) => setKindFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 >
                   <option value="all">All kinds</option>
                   {REPORT_KINDS.map((k) => (
@@ -368,15 +368,15 @@ export default function ReportsPage() {
                   <TBody>
                     {filtered.map((r) => (
                       <TR key={r.id} className="cursor-pointer" onClick={() => openReport(r)}>
-                        <TD className="font-medium text-zinc-100">{r.title}</TD>
+                        <TD className="font-medium text-slate-100">{r.title}</TD>
                         <TD>
                           <Badge tone={kindTone(r.kind)}>{kindLabel(r.kind)}</Badge>
                         </TD>
-                        <TD className="text-zinc-400">{r.pipeline_id ? pipelineName(r.pipeline_id) : '—'}</TD>
+                        <TD className="text-slate-400">{r.pipeline_id ? pipelineName(r.pipeline_id) : '—'}</TD>
                         <TD>
                           <Badge tone="neutral">{(r.format ?? 'json').toUpperCase()}</Badge>
                         </TD>
-                        <TD className="text-zinc-500">{fmtDate(r.created_at)}</TD>
+                        <TD className="text-slate-500">{fmtDate(r.created_at)}</TD>
                         <TD className="text-right" onClick={(e) => e.stopPropagation()}>
                           <div className="flex justify-end gap-2">
                             <Button size="sm" variant="secondary" onClick={() => openReport(r)}>
@@ -426,7 +426,7 @@ export default function ReportsPage() {
             <select
               value={form.kind}
               onChange={(e) => setForm({ ...form, kind: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {REPORT_KINDS.map((k) => (
                 <option key={k.value} value={k.value}>
@@ -439,7 +439,7 @@ export default function ReportsPage() {
             <select
               value={form.pipeline_id}
               onChange={(e) => setForm({ ...form, pipeline_id: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               <option value="">{requiresPipeline ? 'Select a pipeline' : 'All pipelines'}</option>
               {pipelines.map((p) => (
@@ -450,14 +450,14 @@ export default function ReportsPage() {
               ))}
             </select>
             {requiresPipeline && (
-              <span className="mt-1 block text-xs text-zinc-500">A pipeline deep-dive targets a single pipeline.</span>
+              <span className="mt-1 block text-xs text-slate-500">A pipeline deep-dive targets a single pipeline.</span>
             )}
           </Field>
           <Field label="Format">
             <select
               value={form.format}
               onChange={(e) => setForm({ ...form, format: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {FORMATS.map((f) => (
                 <option key={f} value={f}>
@@ -499,11 +499,11 @@ export default function ReportsPage() {
               <Badge tone={kindTone(viewing.kind)}>{kindLabel(viewing.kind)}</Badge>
               <Badge tone="neutral">{(viewing.format ?? 'json').toUpperCase()}</Badge>
               {viewing.pipeline_id && <Badge tone="info">{pipelineName(viewing.pipeline_id)}</Badge>}
-              <span className="text-xs text-zinc-500">{fmtDate(viewing.created_at)}</span>
+              <span className="text-xs text-slate-500">{fmtDate(viewing.created_at)}</span>
               {viewLoading && <Spinner label="Loading..." />}
             </div>
-            <div className="max-h-[55vh] overflow-auto rounded-lg border border-zinc-800 bg-zinc-950/60 p-4">
-              <pre className="whitespace-pre-wrap break-words text-xs leading-relaxed text-zinc-300">
+            <div className="max-h-[55vh] overflow-auto rounded-lg border border-slate-800 bg-slate-950/60 p-4">
+              <pre className="whitespace-pre-wrap break-words text-xs leading-relaxed text-slate-300">
                 {contentToText(viewing.content, viewing.format) || 'This report has no content body.'}
               </pre>
             </div>
@@ -517,7 +517,7 @@ export default function ReportsPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
       {children}
     </label>
   )
@@ -537,7 +537,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
     />
   )
 }

@@ -253,8 +253,8 @@ export default function AuditsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Scheduled Audits</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Scheduled Audits</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Recurring posture audits that snapshot, evaluate policies, and scan findings — with full run history.
           </p>
         </div>
@@ -263,7 +263,7 @@ export default function AuditsPage() {
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -301,12 +301,12 @@ export default function AuditsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search audits..."
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 />
                 <select
                   value={scheduleFilter}
                   onChange={(e) => setScheduleFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
                 >
                   <option value="all">All schedules</option>
                   {SCHEDULES.map((s) => (
@@ -355,16 +355,16 @@ export default function AuditsPage() {
                       const violations = num(a.summary?.violations)
                       return (
                         <TR key={a.id} className="cursor-pointer" onClick={() => openDetail(a)}>
-                          <TD className="font-medium text-zinc-100">{a.name}</TD>
+                          <TD className="font-medium text-slate-100">{a.name}</TD>
                           <TD>
                             <Badge tone="info">{a.schedule || 'manual'}</Badge>
                           </TD>
                           <TD>
                             <Badge tone={statusTone(a.status)}>{a.status || 'idle'}</Badge>
                           </TD>
-                          <TD className="text-zinc-500">{fmtDate(a.last_run_at)}</TD>
-                          <TD className={findings > 0 ? 'text-red-400' : 'text-zinc-500'}>{a.last_run_at ? findings : '—'}</TD>
-                          <TD className={violations > 0 ? 'text-amber-400' : 'text-zinc-500'}>
+                          <TD className="text-slate-500">{fmtDate(a.last_run_at)}</TD>
+                          <TD className={findings > 0 ? 'text-red-400' : 'text-slate-500'}>{a.last_run_at ? findings : '—'}</TD>
+                          <TD className={violations > 0 ? 'text-amber-400' : 'text-slate-500'}>
                             {a.last_run_at ? violations : '—'}
                           </TD>
                           <TD className="text-right" onClick={(e) => e.stopPropagation()}>
@@ -424,7 +424,7 @@ export default function AuditsPage() {
             <select
               value={form.schedule}
               onChange={(e) => setForm({ ...form, schedule: e.target.value })}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {SCHEDULES.map((s) => (
                 <option key={s.value} value={s.value}>
@@ -433,7 +433,7 @@ export default function AuditsPage() {
               ))}
             </select>
           </Field>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-slate-500">
             Running an audit captures a snapshot, evaluates all enabled policies, and runs the finding detectors. The
             summary below records the result of each run.
           </p>
@@ -464,7 +464,7 @@ export default function AuditsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="info">{detail.schedule || 'manual'}</Badge>
               <Badge tone={statusTone(detail.status)}>{detail.status || 'idle'}</Badge>
-              <span className="text-xs text-zinc-500">Last run: {fmtDate(detail.last_run_at)}</span>
+              <span className="text-xs text-slate-500">Last run: {fmtDate(detail.last_run_at)}</span>
               {detailLoading && <Spinner label="Refreshing..." />}
             </div>
 
@@ -486,7 +486,7 @@ export default function AuditsPage() {
 
                 {detail.summary?.severity && Object.keys(detail.summary.severity).length > 0 && (
                   <div>
-                    <div className="mb-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                    <div className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-500">
                       Findings by severity
                     </div>
                     <SeverityBars severity={detail.summary.severity} />
@@ -494,16 +494,16 @@ export default function AuditsPage() {
                 )}
 
                 {typeof detail.summary?.risk_score === 'number' && (
-                  <div className="rounded-lg border border-zinc-800 bg-zinc-900/40 px-4 py-3 text-sm text-zinc-300">
+                  <div className="rounded-lg border border-slate-800 bg-slate-900/40 px-4 py-3 text-sm text-slate-300">
                     Avg risk score at run: <span className="font-semibold text-red-400">{detail.summary.risk_score}</span>
                   </div>
                 )}
 
-                <details className="rounded-lg border border-zinc-800 bg-zinc-950/60">
-                  <summary className="cursor-pointer px-4 py-2 text-xs font-medium uppercase tracking-wide text-zinc-500">
+                <details className="rounded-lg border border-slate-800 bg-slate-950/60">
+                  <summary className="cursor-pointer px-4 py-2 text-xs font-medium uppercase tracking-wide text-slate-500">
                     Raw summary
                   </summary>
-                  <pre className="max-h-64 overflow-auto px-4 py-3 text-xs text-zinc-400">
+                  <pre className="max-h-64 overflow-auto px-4 py-3 text-xs text-slate-400">
                     {JSON.stringify(detail.summary ?? {}, null, 2)}
                   </pre>
                 </details>
@@ -543,13 +543,13 @@ function SeverityBars({ severity }: { severity: Record<string, number> }) {
           <div className="w-20 shrink-0">
             <Badge tone={severityTone(k)}>{k}</Badge>
           </div>
-          <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-zinc-800">
+          <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-slate-800">
             <div
               className="h-full rounded-full bg-red-500"
               style={{ width: `${(v / max) * 100}%` }}
             />
           </div>
-          <div className="w-8 shrink-0 text-right text-sm tabular-nums text-zinc-300">{v}</div>
+          <div className="w-8 shrink-0 text-right text-sm tabular-nums text-slate-300">{v}</div>
         </div>
       ))}
     </div>
@@ -559,7 +559,7 @@ function SeverityBars({ severity }: { severity: Record<string, number> }) {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-zinc-500">{label}</span>
+      <span className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">{label}</span>
       {children}
     </label>
   )
@@ -579,7 +579,7 @@ function TextInput({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+      className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-red-500/60"
     />
   )
 }

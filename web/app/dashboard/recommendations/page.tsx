@@ -64,13 +64,13 @@ function fmtDelta(d: number | null) {
 function DiffView({ diff }: { diff: string }) {
   const lines = diff.split('\n')
   return (
-    <pre className="max-h-80 overflow-auto rounded-lg border border-zinc-800 bg-black p-3 text-xs leading-relaxed">
+    <pre className="max-h-80 overflow-auto rounded-lg border border-slate-800 bg-black p-3 text-xs leading-relaxed">
       {lines.map((line, i) => {
-        let cls = 'text-zinc-400'
+        let cls = 'text-slate-400'
         if (line.startsWith('+') && !line.startsWith('+++')) cls = 'text-emerald-400 bg-emerald-950/30'
         else if (line.startsWith('-') && !line.startsWith('---')) cls = 'text-red-400 bg-red-950/30'
         else if (line.startsWith('@@')) cls = 'text-sky-400'
-        else if (line.startsWith('+++') || line.startsWith('---')) cls = 'text-zinc-500'
+        else if (line.startsWith('+++') || line.startsWith('---')) cls = 'text-slate-500'
         return (
           <div key={i} className={`whitespace-pre ${cls}`}>
             {line || ' '}
@@ -222,8 +222,8 @@ export default function RecommendationsPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Recommendations</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Recommendations</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Least-privilege remediations with ready-to-merge diffs and the risk reduction each one delivers.
           </p>
         </div>
@@ -273,12 +273,12 @@ export default function RecommendationsPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search recommendations..."
-                  className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                  className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
                 />
                 <select
                   value={kindFilter}
                   onChange={(e) => setKindFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All kinds</option>
                   {kinds.map((k) => (
@@ -290,7 +290,7 @@ export default function RecommendationsPage() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All statuses</option>
                   {STATUS_OPTIONS.map((s) => (
@@ -315,7 +315,7 @@ export default function RecommendationsPage() {
                   />
                 </div>
               ) : (
-                <div className="divide-y divide-zinc-800">
+                <div className="divide-y divide-slate-800">
                   {filtered.map((r) => (
                     <div key={r.id} className="px-5 py-4">
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -323,18 +323,18 @@ export default function RecommendationsPage() {
                           <div className="flex flex-wrap items-center gap-2">
                             <button
                               onClick={() => setDetail(r)}
-                              className="text-left font-medium text-zinc-100 hover:text-red-300"
+                              className="text-left font-medium text-slate-100 hover:text-red-300"
                             >
                               {r.title}
                             </button>
                             <Badge tone="neutral">{fmtKind(r.kind)}</Badge>
                             <Badge tone={statusTone(r.status)}>{r.status}</Badge>
                           </div>
-                          {r.detail && <p className="mt-1 max-w-2xl text-sm text-zinc-400">{r.detail}</p>}
-                          <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-zinc-500">
+                          {r.detail && <p className="mt-1 max-w-2xl text-sm text-slate-400">{r.detail}</p>}
+                          <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-500">
                             <span>
                               Risk delta:{' '}
-                              <span className={r.risk_delta != null && r.risk_delta < 0 ? 'text-emerald-400' : 'text-zinc-300'}>
+                              <span className={r.risk_delta != null && r.risk_delta < 0 ? 'text-emerald-400' : 'text-slate-300'}>
                                 {fmtDelta(r.risk_delta)}
                               </span>
                             </span>
@@ -359,7 +359,7 @@ export default function RecommendationsPage() {
                       </div>
                       {r.suggested_diff && (
                         <details className="mt-3">
-                          <summary className="cursor-pointer text-xs text-zinc-500 hover:text-zinc-300">
+                          <summary className="cursor-pointer text-xs text-slate-500 hover:text-slate-300">
                             Preview suggested diff
                           </summary>
                           <div className="mt-2">
@@ -406,25 +406,25 @@ export default function RecommendationsPage() {
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="neutral">{fmtKind(detail.kind)}</Badge>
               <Badge tone={statusTone(detail.status)}>{detail.status}</Badge>
-              <span className="text-xs text-zinc-500">
+              <span className="text-xs text-slate-500">
                 Risk delta:{' '}
-                <span className={detail.risk_delta != null && detail.risk_delta < 0 ? 'text-emerald-400' : 'text-zinc-300'}>
+                <span className={detail.risk_delta != null && detail.risk_delta < 0 ? 'text-emerald-400' : 'text-slate-300'}>
                   {fmtDelta(detail.risk_delta)}
                 </span>
               </span>
             </div>
-            {detail.detail && <p className="text-zinc-300">{detail.detail}</p>}
+            {detail.detail && <p className="text-slate-300">{detail.detail}</p>}
 
             {detail.suggested_diff ? (
               <div>
-                <div className="mb-1 text-xs uppercase tracking-wide text-zinc-500">Suggested diff</div>
+                <div className="mb-1 text-xs uppercase tracking-wide text-slate-500">Suggested diff</div>
                 <DiffView diff={detail.suggested_diff} />
               </div>
             ) : (
-              <p className="text-xs text-zinc-500">No diff attached to this recommendation.</p>
+              <p className="text-xs text-slate-500">No diff attached to this recommendation.</p>
             )}
 
-            <div className="grid grid-cols-2 gap-4 text-xs text-zinc-500">
+            <div className="grid grid-cols-2 gap-4 text-xs text-slate-500">
               <div>Created {fmtDate(detail.created_at)}</div>
               {detail.applied_at && (
                 <div>

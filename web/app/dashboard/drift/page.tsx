@@ -256,8 +256,8 @@ export default function DriftPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Posture Drift</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Posture Drift</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Capture posture snapshots, pin a baseline, and detect permission drift between any two points in time.
           </p>
         </div>
@@ -266,7 +266,7 @@ export default function DriftPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -310,17 +310,17 @@ export default function DriftPage() {
             </CardHeader>
             <CardBody>
               {snapshots.length < 2 ? (
-                <p className="text-sm text-zinc-500">
+                <p className="text-sm text-slate-500">
                   Capture at least two snapshots to compare. {baseline ? '' : 'Pin one as the baseline to anchor comparisons.'}
                 </p>
               ) : (
                 <div className="flex flex-wrap items-end gap-3">
                   <div>
-                    <label className="mb-1 block text-xs uppercase text-zinc-500">From (baseline)</label>
+                    <label className="mb-1 block text-xs uppercase text-slate-500">From (baseline)</label>
                     <select
                       value={detectFrom}
                       onChange={(e) => setDetectFrom(e.target.value)}
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                      className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                     >
                       {snapshots.map((s) => (
                         <option key={s.id} value={s.id}>
@@ -329,13 +329,13 @@ export default function DriftPage() {
                       ))}
                     </select>
                   </div>
-                  <div className="self-center pb-2 text-zinc-600">→</div>
+                  <div className="self-center pb-2 text-slate-600">→</div>
                   <div>
-                    <label className="mb-1 block text-xs uppercase text-zinc-500">To (current)</label>
+                    <label className="mb-1 block text-xs uppercase text-slate-500">To (current)</label>
                     <select
                       value={detectTo}
                       onChange={(e) => setDetectTo(e.target.value)}
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                      className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                     >
                       {snapshots.map((s) => (
                         <option key={s.id} value={s.id}>
@@ -375,23 +375,23 @@ export default function DriftPage() {
                       }
                     />
                   ) : (
-                    <ol className="relative space-y-4 border-l border-zinc-800 pl-6">
+                    <ol className="relative space-y-4 border-l border-slate-800 pl-6">
                       {snapshots.map((s) => (
                         <li key={s.id} className="relative">
                           <span
                             className={`absolute -left-[1.6rem] top-1 h-3 w-3 rounded-full border-2 ${
                               s.is_baseline
                                 ? 'border-red-500 bg-red-500'
-                                : 'border-zinc-600 bg-zinc-900'
+                                : 'border-slate-600 bg-slate-900'
                             }`}
                           />
-                          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3">
+                          <div className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-slate-800 bg-slate-900/50 px-4 py-3">
                             <div>
                               <div className="flex items-center gap-2">
-                                <span className="font-medium text-zinc-100">{s.label || s.id.slice(0, 8)}</span>
+                                <span className="font-medium text-slate-100">{s.label || s.id.slice(0, 8)}</span>
                                 {s.is_baseline && <Badge tone="critical">baseline</Badge>}
                               </div>
-                              <div className="mt-1 text-xs text-zinc-500">
+                              <div className="mt-1 text-xs text-slate-500">
                                 {fmt(s.created_at)} · {s.pipeline_count ?? 0} pipelines · {s.finding_count ?? 0} findings
                               </div>
                             </div>
@@ -419,7 +419,7 @@ export default function DriftPage() {
                     <select
                       value={statusFilter}
                       onChange={(e) => setStatusFilter(e.target.value)}
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200"
+                      className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200"
                     >
                       <option value="all">All status</option>
                       <option value="pending">Pending</option>
@@ -429,7 +429,7 @@ export default function DriftPage() {
                     <select
                       value={severityFilter}
                       onChange={(e) => setSeverityFilter(e.target.value)}
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs text-zinc-200"
+                      className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-xs text-slate-200"
                     >
                       <option value="all">All severity</option>
                       <option value="critical">Critical</option>
@@ -466,19 +466,19 @@ export default function DriftPage() {
                           <TR key={e.id}>
                             <TD>
                               <button
-                                className="font-medium text-zinc-100 hover:text-red-400"
+                                className="font-medium text-slate-100 hover:text-red-400"
                                 onClick={() => setEventDetail(e)}
                               >
                                 {e.change_type}
                               </button>
                               {e.pipeline_id && (
-                                <div className="mt-0.5 font-mono text-[11px] text-zinc-500">
+                                <div className="mt-0.5 font-mono text-[11px] text-slate-500">
                                   {e.pipeline_id.slice(0, 12)}…
                                 </div>
                               )}
                             </TD>
                             <TD>
-                              <span className="text-xs text-zinc-400">
+                              <span className="text-xs text-slate-400">
                                 {snapLabel(e.from_snapshot_id)} → {snapLabel(e.to_snapshot_id)}
                               </span>
                             </TD>
@@ -486,14 +486,14 @@ export default function DriftPage() {
                               {e.severity ? (
                                 <Badge tone={severityTone(e.severity)}>{e.severity}</Badge>
                               ) : (
-                                <span className="text-zinc-600">—</span>
+                                <span className="text-slate-600">—</span>
                               )}
                             </TD>
                             <TD>
                               <Badge tone={statusTone(e.status)}>{e.status || 'pending'}</Badge>
                             </TD>
                             <TD>
-                              <span className="text-xs text-zinc-500">{fmt(e.created_at)}</span>
+                              <span className="text-xs text-slate-500">{fmt(e.created_at)}</span>
                             </TD>
                             <TD className="text-right">
                               <div className="flex justify-end gap-2">
@@ -535,25 +535,25 @@ export default function DriftPage() {
         {eventDetail && (
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <span className="text-lg font-semibold text-zinc-100">{eventDetail.change_type}</span>
+              <span className="text-lg font-semibold text-slate-100">{eventDetail.change_type}</span>
               <div className="flex gap-2">
                 {eventDetail.severity && <Badge tone={severityTone(eventDetail.severity)}>{eventDetail.severity}</Badge>}
                 <Badge tone={statusTone(eventDetail.status)}>{eventDetail.status || 'pending'}</Badge>
               </div>
             </div>
-            <div className="text-xs text-zinc-500">
+            <div className="text-xs text-slate-500">
               {snapLabel(eventDetail.from_snapshot_id)} → {snapLabel(eventDetail.to_snapshot_id)} · {fmt(eventDetail.created_at)}
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <div>
-                <div className="mb-1 text-xs uppercase text-zinc-500">Before</div>
-                <pre className="max-h-60 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-300">
+                <div className="mb-1 text-xs uppercase text-slate-500">Before</div>
+                <pre className="max-h-60 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300">
                   {preview(eventDetail.before)}
                 </pre>
               </div>
               <div>
-                <div className="mb-1 text-xs uppercase text-zinc-500">After</div>
-                <pre className="max-h-60 overflow-auto rounded-lg border border-zinc-800 bg-zinc-950 p-3 text-xs text-zinc-300">
+                <div className="mb-1 text-xs uppercase text-slate-500">After</div>
+                <pre className="max-h-60 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300">
                   {preview(eventDetail.after)}
                 </pre>
               </div>
@@ -600,14 +600,14 @@ function SnapshotForm({
       }
     >
       <div>
-        <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Label</label>
+        <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Label</label>
         <input
           value={label}
           onChange={(e) => setLabel(e.target.value)}
           placeholder="Pre-release audit"
-          className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+          className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
         />
-        <p className="mt-2 text-xs text-zinc-500">
+        <p className="mt-2 text-xs text-slate-500">
           A snapshot freezes the current posture (pipelines, permissions, findings) so it can be diffed later.
         </p>
       </div>

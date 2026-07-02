@@ -316,8 +316,8 @@ export default function PoliciesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Policy Engine</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Policy Engine</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Codify your CI/CD security guardrails, evaluate them against every pipeline, and exempt accepted risk.
           </p>
         </div>
@@ -363,12 +363,12 @@ export default function PoliciesPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search policies..."
-                  className="w-56 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+                  className="w-56 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
                 />
                 <select
                   value={severityFilter}
                   onChange={(e) => setSeverityFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All severities</option>
                   {SEVERITIES.map((s) => (
@@ -380,7 +380,7 @@ export default function PoliciesPage() {
                 <select
                   value={enabledFilter}
                   onChange={(e) => setEnabledFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
                 >
                   <option value="all">All</option>
                   <option value="enabled">Enabled</option>
@@ -418,13 +418,13 @@ export default function PoliciesPage() {
                         <TD>
                           <button
                             onClick={() => loadViolations(p)}
-                            className="text-left font-medium text-zinc-100 hover:text-red-300"
+                            className="text-left font-medium text-slate-100 hover:text-red-300"
                           >
                             {p.name}
                           </button>
                         </TD>
                         <TD>
-                          <span className="text-xs text-zinc-400">{fmtRule(p.rule_type)}</span>
+                          <span className="text-xs text-slate-400">{fmtRule(p.rule_type)}</span>
                         </TD>
                         <TD>
                           <Badge tone={severityTone(p.severity)}>{p.severity}</Badge>
@@ -463,7 +463,7 @@ export default function PoliciesPage() {
               <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <CardTitle>Violations · {viewPolicy.name}</CardTitle>
-                  <p className="mt-1 text-xs text-zinc-500">{fmtRule(viewPolicy.rule_type)}</p>
+                  <p className="mt-1 text-xs text-slate-500">{fmtRule(viewPolicy.rule_type)}</p>
                 </div>
                 <div className="flex gap-2">
                   <Button size="sm" variant="secondary" onClick={evaluate} disabled={busy}>
@@ -509,15 +509,15 @@ export default function PoliciesPage() {
                             <Badge tone={violationTone(v.status)}>{v.status}</Badge>
                           </TD>
                           <TD>
-                            <div className="max-w-md text-zinc-300">{v.detail || '—'}</div>
+                            <div className="max-w-md text-slate-300">{v.detail || '—'}</div>
                             {v.exemption_reason && (
-                              <div className="mt-0.5 text-xs text-zinc-500">Exempt: {v.exemption_reason}</div>
+                              <div className="mt-0.5 text-xs text-slate-500">Exempt: {v.exemption_reason}</div>
                             )}
                           </TD>
-                          <TD className="font-mono text-xs text-zinc-400">
+                          <TD className="font-mono text-xs text-slate-400">
                             {v.pipeline_id ? v.pipeline_id.slice(0, 8) : '—'}
                           </TD>
-                          <TD className="text-zinc-400">{fmtDate(v.evaluated_at)}</TD>
+                          <TD className="text-slate-400">{fmtDate(v.evaluated_at)}</TD>
                           <TD>
                             <div className="flex justify-end">
                               {v.status !== 'exempted' ? (
@@ -525,7 +525,7 @@ export default function PoliciesPage() {
                                   Exempt
                                 </Button>
                               ) : (
-                                <span className="text-xs text-zinc-600">exempted</span>
+                                <span className="text-xs text-slate-600">exempted</span>
                               )}
                             </div>
                           </TD>
@@ -563,21 +563,21 @@ export default function PoliciesPage() {
             </div>
           )}
           <div>
-            <label className="text-xs uppercase tracking-wide text-zinc-500">Name</label>
+            <label className="text-xs uppercase tracking-wide text-slate-500">Name</label>
             <input
               value={form.name}
               onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
               placeholder="e.g. Require OIDC for all deploys"
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 placeholder:text-zinc-600 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 placeholder:text-slate-600 focus:border-red-600 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs uppercase tracking-wide text-zinc-500">Rule type</label>
+              <label className="text-xs uppercase tracking-wide text-slate-500">Rule type</label>
               <select
                 value={form.rule_type}
                 onChange={(e) => setForm((f) => ({ ...f, rule_type: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
               >
                 {RULE_TYPES.map((r) => (
                   <option key={r} value={r}>
@@ -587,11 +587,11 @@ export default function PoliciesPage() {
               </select>
             </div>
             <div>
-              <label className="text-xs uppercase tracking-wide text-zinc-500">Severity</label>
+              <label className="text-xs uppercase tracking-wide text-slate-500">Severity</label>
               <select
                 value={form.severity}
                 onChange={(e) => setForm((f) => ({ ...f, severity: e.target.value }))}
-                className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:border-red-600 focus:outline-none"
+                className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:border-red-600 focus:outline-none"
               >
                 {SEVERITIES.map((s) => (
                   <option key={s} value={s}>
@@ -602,15 +602,15 @@ export default function PoliciesPage() {
             </div>
           </div>
           <div>
-            <label className="text-xs uppercase tracking-wide text-zinc-500">Config (JSON)</label>
+            <label className="text-xs uppercase tracking-wide text-slate-500">Config (JSON)</label>
             <textarea
               value={form.config}
               onChange={(e) => setForm((f) => ({ ...f, config: e.target.value }))}
               rows={5}
               spellCheck={false}
-              className="mt-1 w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-xs text-zinc-200 focus:border-red-600 focus:outline-none"
+              className="mt-1 w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-xs text-slate-200 focus:border-red-600 focus:outline-none"
             />
-            <p className="mt-1 text-xs text-zinc-600">Rule-specific options, e.g. {`{ "max_age_days": 90 }`}</p>
+            <p className="mt-1 text-xs text-slate-600">Rule-specific options, e.g. {`{ "max_age_days": 90 }`}</p>
           </div>
           <label className="flex items-center gap-2">
             <input
@@ -619,7 +619,7 @@ export default function PoliciesPage() {
               onChange={(e) => setForm((f) => ({ ...f, is_enabled: e.target.checked }))}
               className="h-4 w-4 cursor-pointer accent-red-600"
             />
-            <span className="text-zinc-300">Enabled</span>
+            <span className="text-slate-300">Enabled</span>
           </label>
         </div>
       </Modal>

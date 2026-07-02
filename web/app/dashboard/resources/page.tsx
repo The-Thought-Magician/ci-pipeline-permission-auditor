@@ -274,8 +274,8 @@ export default function ResourcesPage() {
     <div className="space-y-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold text-zinc-100">Resources &amp; Crown Jewels</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold text-slate-100">Resources &amp; Crown Jewels</h1>
+          <p className="mt-1 text-sm text-slate-500">
             Catalog the cloud resources your pipelines can touch, flag the crown jewels, and see which are reachable
             from CI.
           </p>
@@ -285,7 +285,7 @@ export default function ResourcesPage() {
             <select
               value={workspaceId}
               onChange={(e) => setWorkspaceId(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -343,7 +343,7 @@ export default function ResourcesPage() {
                   <Spinner label="Loading reachability..." />
                 </div>
               ) : !crown || crown.resources.length === 0 ? (
-                <p className="text-sm text-zinc-500">
+                <p className="text-sm text-slate-500">
                   No crown jewels flagged yet. Mark a resource as a crown jewel to surface its CI exposure here.
                 </p>
               ) : (
@@ -356,7 +356,7 @@ export default function ResourcesPage() {
                       <div
                         key={r.id}
                         className={`flex flex-wrap items-center justify-between gap-2 rounded-lg border px-4 py-3 ${
-                          exposed ? 'border-red-800 bg-red-950/30' : 'border-zinc-800 bg-zinc-900/60'
+                          exposed ? 'border-red-800 bg-red-950/30' : 'border-slate-800 bg-slate-900/60'
                         }`}
                       >
                         <div className="flex items-center gap-3">
@@ -364,8 +364,8 @@ export default function ResourcesPage() {
                             ◆
                           </span>
                           <div>
-                            <div className="font-medium text-zinc-100">{r.name}</div>
-                            <div className="font-mono text-xs text-zinc-500">{r.identifier || r.kind || '—'}</div>
+                            <div className="font-medium text-slate-100">{r.name}</div>
+                            <div className="font-mono text-xs text-slate-500">{r.identifier || r.kind || '—'}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-3">
@@ -393,12 +393,12 @@ export default function ResourcesPage() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                   placeholder="Search by name, identifier, or kind..."
-                  className="min-w-[200px] flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600"
+                  className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600"
                 />
                 <select
                   value={crownFilter}
                   onChange={(e) => setCrownFilter(e.target.value as CrownFilter)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All resources</option>
                   <option value="crown">Crown jewels</option>
@@ -407,7 +407,7 @@ export default function ResourcesPage() {
                 <select
                   value={kindFilter}
                   onChange={(e) => setKindFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All kinds</option>
                   {kinds.map((k) => (
@@ -419,7 +419,7 @@ export default function ResourcesPage() {
                 <select
                   value={envFilter}
                   onChange={(e) => setEnvFilter(e.target.value)}
-                  className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
                 >
                   <option value="all">All environments</option>
                   {environments.map((e) => (
@@ -431,8 +431,8 @@ export default function ResourcesPage() {
               </div>
 
               {selected.size > 0 && (
-                <div className="flex flex-wrap items-center gap-3 rounded-lg border border-zinc-700 bg-zinc-900/80 px-4 py-2 text-sm">
-                  <span className="text-zinc-400">{selected.size} selected</span>
+                <div className="flex flex-wrap items-center gap-3 rounded-lg border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm">
+                  <span className="text-slate-400">{selected.size} selected</span>
                   <Button size="sm" variant="secondary" onClick={() => bulkMarkCrown(true)} disabled={busy}>
                     Mark crown jewel
                   </Button>
@@ -442,7 +442,7 @@ export default function ResourcesPage() {
                   <Button size="sm" variant="danger" onClick={bulkDelete} disabled={busy}>
                     Delete selected
                   </Button>
-                  <button className="ml-auto text-zinc-500 hover:text-zinc-300" onClick={() => setSelected(new Set())}>
+                  <button className="ml-auto text-slate-500 hover:text-slate-300" onClick={() => setSelected(new Set())}>
                     Clear
                   </button>
                 </div>
@@ -505,13 +505,13 @@ export default function ResourcesPage() {
                           />
                         </TD>
                         <TD>
-                          <div className="font-medium text-zinc-100">{r.name}</div>
-                          {r.identifier && <div className="font-mono text-xs text-zinc-500">{r.identifier}</div>}
+                          <div className="font-medium text-slate-100">{r.name}</div>
+                          {r.identifier && <div className="font-mono text-xs text-slate-500">{r.identifier}</div>}
                         </TD>
                         <TD>
-                          <span className="text-zinc-400">{r.kind || '—'}</span>
+                          <span className="text-slate-400">{r.kind || '—'}</span>
                         </TD>
-                        <TD>{r.environment ? <Badge tone="info">{r.environment}</Badge> : <span className="text-zinc-600">—</span>}</TD>
+                        <TD>{r.environment ? <Badge tone="info">{r.environment}</Badge> : <span className="text-slate-600">—</span>}</TD>
                         <TD>
                           <div className="flex flex-wrap gap-1">
                             {(r.tags ?? []).slice(0, 4).map((t) => (
@@ -520,7 +520,7 @@ export default function ResourcesPage() {
                               </Badge>
                             ))}
                             {(r.tags?.length ?? 0) > 4 && (
-                              <span className="text-xs text-zinc-500">+{(r.tags?.length ?? 0) - 4}</span>
+                              <span className="text-xs text-slate-500">+{(r.tags?.length ?? 0) - 4}</span>
                             )}
                           </div>
                         </TD>
@@ -651,21 +651,21 @@ function ResourceForm({
           <div className="rounded-lg border border-red-800 bg-red-950/50 px-3 py-2 text-sm text-red-300">{err}</div>
         )}
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Name</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Name</label>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="prod-artifacts"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Kind</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Kind</label>
             <select
               value={kind ?? ''}
               onChange={(e) => setKind(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {KINDS.map((k) => (
                 <option key={k} value={k}>
@@ -675,11 +675,11 @@ function ResourceForm({
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Environment</label>
+            <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Environment</label>
             <select
               value={environment ?? ''}
               onChange={(e) => setEnvironment(e.target.value)}
-              className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+              className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
             >
               {ENVIRONMENTS.map((e) => (
                 <option key={e} value={e}>
@@ -690,26 +690,26 @@ function ResourceForm({
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Identifier (ARN / URN)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Identifier (ARN / URN)</label>
           <input
             value={identifier}
             onChange={(e) => setIdentifier(e.target.value)}
             placeholder="arn:aws:s3:::prod-artifacts"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm font-mono text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm font-mono text-slate-200"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium uppercase text-zinc-500">Tags (comma-separated)</label>
+          <label className="mb-1 block text-xs font-medium uppercase text-slate-500">Tags (comma-separated)</label>
           <input
             value={tagsText}
             onChange={(e) => setTagsText(e.target.value)}
             placeholder="pci, customer-data"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-2 text-sm text-zinc-200"
+            className="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200"
           />
         </div>
         <label
           className={`flex cursor-pointer items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
-            isCrownJewel ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-zinc-700 bg-zinc-900 text-zinc-300'
+            isCrownJewel ? 'border-red-800 bg-red-950/40 text-red-300' : 'border-slate-700 bg-slate-900 text-slate-300'
           }`}
         >
           <input type="checkbox" checked={isCrownJewel} onChange={(e) => setIsCrownJewel(e.target.checked)} />

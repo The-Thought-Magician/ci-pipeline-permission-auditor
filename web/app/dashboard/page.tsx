@@ -73,7 +73,7 @@ function riskAccent(score: number): 'red' | 'amber' | 'emerald' {
 
 function RiskTrendChart({ points }: { points: TrendPoint[] }) {
   if (points.length === 0) {
-    return <p className="text-sm text-zinc-500">No snapshots yet. Risk trend appears once you capture posture snapshots.</p>
+    return <p className="text-sm text-slate-500">No snapshots yet. Risk trend appears once you capture posture snapshots.</p>
   }
   const W = 720
   const H = 200
@@ -234,8 +234,8 @@ export default function DashboardPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-zinc-100">Security Posture</h1>
-          <p className="mt-1 text-sm text-zinc-500">
+          <h1 className="text-xl font-bold tracking-tight text-slate-100">Security Posture</h1>
+          <p className="mt-1 text-sm text-slate-500">
             CI/CD pipeline permission and blast-radius overview.
           </p>
         </div>
@@ -244,7 +244,7 @@ export default function DashboardPage() {
             <select
               value={workspaceId}
               onChange={(e) => onSelectWorkspace(e.target.value)}
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-sm text-zinc-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-red-500/60"
             >
               {workspaces.map((w) => (
                 <option key={w.id} value={w.id}>
@@ -318,9 +318,9 @@ export default function DashboardPage() {
                         <span className="flex items-center gap-2">
                           <Badge tone={severityTone(sev)}>{sev}</Badge>
                         </span>
-                        <span className="text-zinc-400">{v}</span>
+                        <span className="text-slate-400">{v}</span>
                       </div>
-                      <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+                      <div className="h-2 w-full overflow-hidden rounded-full bg-slate-800">
                         <div
                           className={
                             sev === 'critical'
@@ -352,15 +352,15 @@ export default function DashboardPage() {
                   <span className={`text-3xl font-bold ${crownReachable > 0 ? 'text-red-400' : 'text-emerald-400'}`}>
                     {crownReachable}
                   </span>
-                  <span className="text-sm text-zinc-500">of {crownTotal} reachable</span>
+                  <span className="text-sm text-slate-500">of {crownTotal} reachable</span>
                 </div>
-                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-800">
                   <div
                     className="h-full rounded-full bg-red-500"
                     style={{ width: `${crownTotal > 0 ? Math.round((crownReachable / crownTotal) * 100) : 0}%` }}
                   />
                 </div>
-                <p className="mt-3 text-xs text-zinc-500">
+                <p className="mt-3 text-xs text-slate-500">
                   Crown jewels a compromised pipeline could reach via effective permissions.
                 </p>
                 <Link
@@ -378,16 +378,16 @@ export default function DashboardPage() {
               </CardHeader>
               <CardBody>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl font-bold text-zinc-100">{Math.round(coverage <= 1 ? coverage * 100 : coverage)}%</span>
-                  <span className="text-sm text-zinc-500">controls covered</span>
+                  <span className="text-3xl font-bold text-slate-100">{Math.round(coverage <= 1 ? coverage * 100 : coverage)}%</span>
+                  <span className="text-sm text-slate-500">controls covered</span>
                 </div>
-                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+                <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-800">
                   <div
                     className="h-full rounded-full bg-emerald-500"
                     style={{ width: `${Math.round(coverage <= 1 ? coverage * 100 : coverage)}%` }}
                   />
                 </div>
-                <p className="mt-3 text-xs text-zinc-500">SOC2 / SLSA control coverage from evidence packs.</p>
+                <p className="mt-3 text-xs text-slate-500">SOC2 / SLSA control coverage from evidence packs.</p>
                 <Link
                   href="/dashboard/evidence"
                   className="mt-3 inline-block text-xs font-medium text-red-400 hover:text-red-300"
@@ -419,10 +419,10 @@ export default function DashboardPage() {
               <Link
                 key={q.href}
                 href={q.href}
-                className="rounded-xl border border-zinc-800 bg-zinc-900/60 px-4 py-3 transition-colors hover:border-zinc-700 hover:bg-zinc-900"
+                className="rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-3 transition-colors hover:border-slate-700 hover:bg-slate-900"
               >
-                <div className="text-sm font-semibold text-zinc-100">{q.label}</div>
-                <div className="mt-0.5 text-xs text-zinc-500">{q.desc}</div>
+                <div className="text-sm font-semibold text-slate-100">{q.label}</div>
+                <div className="mt-0.5 text-xs text-slate-500">{q.desc}</div>
               </Link>
             ))}
           </div>

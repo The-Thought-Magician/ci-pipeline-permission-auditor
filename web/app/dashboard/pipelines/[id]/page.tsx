@@ -327,12 +327,12 @@ export default function PipelineDetailPage() {
         <div>
           <button
             onClick={() => router.push('/dashboard/pipelines')}
-            className="text-xs text-zinc-500 hover:text-zinc-300"
+            className="text-xs text-slate-500 hover:text-slate-300"
           >
             ← Pipelines
           </button>
-          <h1 className="mt-1 text-xl font-bold text-zinc-100">{pipeline.name}</h1>
-          <p className="mt-1 font-mono text-sm text-zinc-500">
+          <h1 className="mt-1 text-xl font-bold text-slate-100">{pipeline.name}</h1>
+          <p className="mt-1 font-mono text-sm text-slate-500">
             {pipeline.repo}
             {pipeline.branch ? ` @ ${pipeline.branch}` : ''}
             {pipeline.file_path ? ` · ${pipeline.file_path}` : ''}
@@ -415,12 +415,12 @@ export default function PipelineDetailPage() {
                       value={p.scope}
                       onChange={(e) => updateDraft(i, { scope: e.target.value })}
                       placeholder="contents"
-                      className="flex-1 rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 font-mono text-xs text-zinc-100 focus:border-red-500 focus:outline-none"
+                      className="flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-1.5 font-mono text-xs text-slate-100 focus:border-red-500 focus:outline-none"
                     />
                     <select
                       value={p.level}
                       onChange={(e) => updateDraft(i, { level: e.target.value })}
-                      className="rounded-lg border border-zinc-700 bg-zinc-900 px-2 py-1.5 text-xs text-zinc-100 focus:border-red-500 focus:outline-none"
+                      className="rounded-lg border border-slate-700 bg-slate-900 px-2 py-1.5 text-xs text-slate-100 focus:border-red-500 focus:outline-none"
                     >
                       <option value="read">read</option>
                       <option value="write">write</option>
@@ -428,7 +428,7 @@ export default function PipelineDetailPage() {
                     </select>
                     <button
                       onClick={() => removeDraftRow(i)}
-                      className="text-zinc-500 hover:text-red-400"
+                      className="text-slate-500 hover:text-red-400"
                       aria-label="Remove"
                     >
                       ✕
@@ -440,15 +440,15 @@ export default function PipelineDetailPage() {
                 </Button>
               </div>
             ) : declaredPairs.length === 0 ? (
-              <p className="text-sm text-zinc-500">No declared permissions on this pipeline.</p>
+              <p className="text-sm text-slate-500">No declared permissions on this pipeline.</p>
             ) : (
               <div className="flex flex-wrap gap-2">
                 {declaredPairs.map((p) => (
                   <span
                     key={p.scope}
-                    className="inline-flex items-center gap-1 rounded-lg border border-zinc-700 bg-zinc-900 px-2.5 py-1 text-xs"
+                    className="inline-flex items-center gap-1 rounded-lg border border-slate-700 bg-slate-900 px-2.5 py-1 text-xs"
                   >
-                    <span className="font-mono text-zinc-300">{p.scope}</span>
+                    <span className="font-mono text-slate-300">{p.scope}</span>
                     <Badge tone={p.level === 'write' ? 'high' : p.level === 'none' ? 'neutral' : 'low'}>
                       {p.level}
                     </Badge>
@@ -465,7 +465,7 @@ export default function PipelineDetailPage() {
           </CardHeader>
           <CardBody className="p-0">
             {effective.length === 0 ? (
-              <div className="px-5 py-4 text-sm text-zinc-500">
+              <div className="px-5 py-4 text-sm text-slate-500">
                 No effective permissions resolved. Run the resolver from the Effective Permissions page.
               </div>
             ) : (
@@ -480,7 +480,7 @@ export default function PipelineDetailPage() {
                 <TBody>
                   {effective.map((e) => (
                     <TR key={e.id}>
-                      <TD className="font-mono text-xs text-zinc-300">{e.action}</TD>
+                      <TD className="font-mono text-xs text-slate-300">{e.action}</TD>
                       <TD>{e.category ? <Badge tone="info">{e.category}</Badge> : '-'}</TD>
                       <TD>
                         {e.is_excess ? (
@@ -506,7 +506,7 @@ export default function PipelineDetailPage() {
           </CardHeader>
           <CardBody className="p-0">
             {!pipeline.identities || pipeline.identities.length === 0 ? (
-              <div className="px-5 py-4 text-sm text-zinc-500">No identities attached.</div>
+              <div className="px-5 py-4 text-sm text-slate-500">No identities attached.</div>
             ) : (
               <Table>
                 <THead>
@@ -519,7 +519,7 @@ export default function PipelineDetailPage() {
                 <TBody>
                   {pipeline.identities.map((i) => (
                     <TR key={i.id}>
-                      <TD className="font-medium text-zinc-200">{i.name}</TD>
+                      <TD className="font-medium text-slate-200">{i.name}</TD>
                       <TD>
                         <Badge tone="info">{i.identity_type ?? '-'}</Badge>
                       </TD>
@@ -545,7 +545,7 @@ export default function PipelineDetailPage() {
           </CardHeader>
           <CardBody className="p-0">
             {!pipeline.actions || pipeline.actions.length === 0 ? (
-              <div className="px-5 py-4 text-sm text-zinc-500">No third-party actions used.</div>
+              <div className="px-5 py-4 text-sm text-slate-500">No third-party actions used.</div>
             ) : (
               <Table>
                 <THead>
@@ -558,7 +558,7 @@ export default function PipelineDetailPage() {
                 <TBody>
                   {pipeline.actions.map((a) => (
                     <TR key={a.id}>
-                      <TD className="font-mono text-xs text-zinc-300">
+                      <TD className="font-mono text-xs text-slate-300">
                         {a.name ?? a.step_name ?? a.id}
                         {a.is_verified_publisher && (
                           <Badge tone="success" className="ml-2">
@@ -605,7 +605,7 @@ export default function PipelineDetailPage() {
             />
           ) : (
             <div className="space-y-4">
-              {blast.summary && <p className="text-sm text-zinc-400">{blast.summary}</p>}
+              {blast.summary && <p className="text-sm text-slate-400">{blast.summary}</p>}
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <Stat label="Reachable resources" value={reachResources} accent="sky" />
                 <Stat label="Reachable secrets" value={reachSecrets} accent="amber" />
@@ -618,11 +618,11 @@ export default function PipelineDetailPage() {
               </div>
               {/* Simple SVG-free bar of the score */}
               <div>
-                <div className="mb-1 flex items-center justify-between text-xs text-zinc-500">
+                <div className="mb-1 flex items-center justify-between text-xs text-slate-500">
                   <span>Blast score</span>
                   <span>{Math.round(blastScore)} / 100</span>
                 </div>
-                <div className="h-3 w-full overflow-hidden rounded-full bg-zinc-800">
+                <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
                   <div
                     className={`h-full ${
                       blastScore >= 70 ? 'bg-red-500' : blastScore >= 40 ? 'bg-amber-500' : 'bg-emerald-500'
@@ -642,11 +642,11 @@ export default function PipelineDetailPage() {
           <CardTitle>What-if simulation</CardTitle>
         </CardHeader>
         <CardBody>
-          <p className="mb-4 text-sm text-zinc-500">
+          <p className="mb-4 text-sm text-slate-500">
             Select effective permissions to remove and re-score the blast radius without changing the pipeline.
           </p>
           {effective.length === 0 ? (
-            <p className="text-sm text-zinc-500">
+            <p className="text-sm text-slate-500">
               No effective permissions to simulate. Resolve permissions first.
             </p>
           ) : (
@@ -661,7 +661,7 @@ export default function PipelineDetailPage() {
                       className={`rounded-lg border px-2.5 py-1 font-mono text-xs transition-colors ${
                         active
                           ? 'border-red-700 bg-red-950 text-red-300 line-through'
-                          : 'border-zinc-700 bg-zinc-900 text-zinc-300 hover:border-zinc-600'
+                          : 'border-slate-700 bg-slate-900 text-slate-300 hover:border-slate-600'
                       }`}
                     >
                       {e.action}
